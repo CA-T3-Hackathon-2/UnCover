@@ -15,9 +15,15 @@ futureDate = new Date(futureDate.setMonth(futureDate.getMonth() + 3));
 const App = () => {
   const initialState = {
     location: "Melbourne",
-    loading: false,
-    error: "",
-    events: [],
+    categories: [
+      "Music",
+      "Performing Arts",
+      "Sports and Outdoors",
+      "Festivals and Lifestyle",
+      "Exhibitions",
+      "Workshops and Education",
+      "All Events",
+    ],
     category: "All Events",
     dateFrom: dateFormatted(new Date()),
     dateTo: dateFormatted(futureDate),
@@ -26,8 +32,15 @@ const App = () => {
   };
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const { location, category, dateFrom, dateTo, locationDistance, price } =
-    store;
+  const {
+    location,
+    category,
+    dateFrom,
+    dateTo,
+    locationDistance,
+    price,
+    categories,
+  } = store;
   const formData = { category, dateFrom, dateTo, locationDistance, price };
 
   const setLocation = (location) => {
@@ -48,7 +61,12 @@ const App = () => {
             exact
             path="/find"
             render={(props) => (
-              <Find {...props} formData={formData} dispatch={dispatch} />
+              <Find
+                {...props}
+                formData={formData}
+                dispatch={dispatch}
+                categories={categories}
+              />
             )}
           />
           <Route
