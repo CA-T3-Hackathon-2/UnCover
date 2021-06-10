@@ -3,6 +3,14 @@ import { categoryIds, dateFormatted } from "../utils/helpers";
 import Submit from "./styled/Submit";
 import capitalize from "../utils/capitalize";
 import { Link } from "react-router-dom";
+import {
+  FormFieldColumn,
+  FormRow,
+  Select,
+  Input,
+  Label,
+} from "./styled/FormComponents";
+import Header from "./styled/Header";
 
 const Form = ({ formData, dispatch }) => {
   const categories = Object.keys(categoryIds);
@@ -20,10 +28,12 @@ const Form = ({ formData, dispatch }) => {
 
   return (
     <div style={{ width: "75rem" }}>
-      <h2 style={{ textAlign: "center" }}>Find your next event</h2>
+      <Header>
+        Find <span style={{ color: "#007bff" }}>your</span> next event
+      </Header>
       <form style={formStyles} onChange={handleSubmit}>
-        <label htmlFor="category">Event Category</label>
-        <select
+        <Label htmlFor="category">Event Category</Label>
+        <Select
           onChange={(e) =>
             dispatch({ type: "setCategory", data: e.target.value })
           }
@@ -32,26 +42,12 @@ const Form = ({ formData, dispatch }) => {
           {categories.map((category) => {
             return <option key={category}>{capitalize(category)}</option>;
           })}
-        </select>
+        </Select>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: "1rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              marginRight: "1rem",
-            }}
-          >
-            <label htmlFor="datemin">Date From</label>
-            <input
+        <FormRow>
+          <FormFieldColumn style={{ marginRight: "1rem" }}>
+            <Label htmlFor="datemin">Date From</Label>
+            <Input
               type="date"
               id="datemin"
               name="datemin"
@@ -61,17 +57,10 @@ const Form = ({ formData, dispatch }) => {
               }
               min={dateFormatted(new Date())}
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              marginLeft: "1rem",
-            }}
-          >
-            <label htmlFor="datemax">Date To</label>
-            <input
+          </FormFieldColumn>
+          <FormFieldColumn style={{ marginLeft: "1rem" }}>
+            <Label htmlFor="datemax">Date To</Label>
+            <Input
               type="date"
               id="datemax"
               name="datemax"
@@ -81,52 +70,33 @@ const Form = ({ formData, dispatch }) => {
               }
               min={dateFormatted(new Date())}
             />
-          </div>
-        </div>
+          </FormFieldColumn>
+        </FormRow>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginTop: "1rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              marginRight: "1rem",
-            }}
-          >
-            <label htmlFor="locationDistance">Location Distance (km)</label>
-            <input
+        <FormRow>
+          <FormFieldColumn style={{ marginRight: "1rem" }}>
+            <Label htmlFor="locationDistance">Location Distance (km)</Label>
+            <Input
               type="number"
               onChange={(e) =>
                 dispatch({ type: "setLocationDistance", data: e.target.value })
               }
               value={locationDistance}
+              min={1}
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              marginLeft: "1rem",
-            }}
-          >
-            <label htmlFor="price">Max price: $</label>
-            <input
+          </FormFieldColumn>
+          <FormFieldColumn style={{ marginLeft: "1rem" }}>
+            <Label htmlFor="price">Max price ($)</Label>
+            <Input
               type="number"
               onChange={(e) =>
                 dispatch({ type: "setPrice", data: e.target.value })
               }
               value={price}
+              min={1}
             />
-          </div>
-        </div>
+          </FormFieldColumn>
+        </FormRow>
         <Link to="/results">
           <Submit>Submit</Submit>
         </Link>
