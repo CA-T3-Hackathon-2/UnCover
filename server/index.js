@@ -4,7 +4,7 @@ const btoa = require("btoa");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const app = express();
 
@@ -22,12 +22,23 @@ router.post("/api", (req, res) => {
     `https://api.eventfinda.com.au/v2/events.json?rows=20&point=${lat},${long}&category=${categoryId}&radius=${maxDistance}&price_max=${maxPrice}&start_date=${fromDate}&end_date=${toDate}`,
     {
       headers: {
-        Authorization: "Basic " + btoa(API_USERNAME + ":" + API_PASSWORD),
+        Authorization:
+          "Basic " +
+          btoa(
+            process.env.REACT_APP_API_KEY +
+              ":" +
+              process.env.REACT_APP_API_PASSWORD
+          ),
       },
     }
   )
     .then((response) => response.json())
     .then((data) => res.json(data));
+});
+
+// Test  working
+app.get("/test", (req, res) => {
+  res.json({ message: "Hello there!" });
 });
 
 app.use("/", router);
