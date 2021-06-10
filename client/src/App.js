@@ -7,6 +7,10 @@ import Find from "./components/Find";
 import Results from "./components/Results";
 //utils
 import reducer from "./utils/reducer";
+import { dateFormatted } from "./utils/helpers";
+
+let futureDate = new Date();
+futureDate = new Date(futureDate.setMonth(futureDate.getMonth() + 3));
 
 const App = () => {
   const initialState = {
@@ -15,8 +19,8 @@ const App = () => {
     error: "",
     events: [],
     category: "All Events",
-    dateFrom: new Date(),
-    dateTo: new Date(),
+    dateFrom: dateFormatted(new Date()),
+    dateTo: dateFormatted(futureDate),
     locationDistance: 10,
     price: 50,
   };
@@ -47,7 +51,11 @@ const App = () => {
               <Find {...props} formData={formData} dispatch={dispatch} />
             )}
           />
-          <Route exact path="/results" render={(props) => <Results />} />
+          <Route
+            exact
+            path="/results"
+            render={(props) => <Results formData={formData} />}
+          />
         </Switch>
       </Router>
     </>
