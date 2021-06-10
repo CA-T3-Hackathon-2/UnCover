@@ -8,7 +8,13 @@ const ResultItem = ({ events }) => {
   return (
     <div>
       {events.map((targetEvent) => (
-        <div key={targetEvent.id} style={{ padding: "1rem 0" }}>
+        <div
+          key={targetEvent.id}
+          style={{
+            padding: "1.5rem",
+            boxShadow: "1px 2px 3px 0 rgba(0,0,0,0.2",
+          }}
+        >
           <EventHeading
             href={targetEvent.url}
             rel="noopener noreferrer"
@@ -21,7 +27,7 @@ const ResultItem = ({ events }) => {
             {new Date(targetEvent.datetime_start).toLocaleString()} to{" "}
             {new Date(targetEvent.datetime_end).toLocaleString()}
           </EventDate>
-          <p>{targetEvent.description}</p>
+          <p style={{ fontSize: "1.4rem" }}>{targetEvent.description}</p>
         </div>
       ))}
     </div>
