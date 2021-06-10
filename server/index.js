@@ -4,7 +4,9 @@ const btoa = require("btoa");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
+const API_USERNAME = "uncover2";
+const API_PASSWORD = "6snxqhzyt4ry";
 
 const app = express();
 
@@ -13,22 +15,17 @@ app.use(bodyParser.json());
 
 // Request data from API
 router.post("/api", (req, res) => {
+  console.log("here");
   // Destructure query params from posted body
-  const {} = req.body;
-  // Destructure lat and long
+  const { categoryID, lat, lng, dateFrom, dateTo, locationDistance, price } =
+    req.body;
+  console.log(req.body);
 
   fetch(
-    // Change query params to correct names
-    `https://api.eventfinda.com.au/v2/events.json?rows=20&point=${lat},${long}&category=${categoryId}&radius=${maxDistance}&price_max=${maxPrice}&start_date=${fromDate}&end_date=${toDate}`,
+    `https://api.eventfinda.com.au/v2/events.json?rows=20&point=${lat},${lng}&category=${categoryID}&radius=${locationDistance}&price_max=${price}&start_date=${dateFrom}&end_date=${dateTo}`,
     {
       headers: {
-        Authorization:
-          "Basic " +
-          btoa(
-            process.env.REACT_APP_API_KEY +
-              ":" +
-              process.env.REACT_APP_API_PASSWORD
-          ),
+        Authorization: "Basic " + btoa(API_USERNAME + ":" + API_PASSWORD),
       },
     }
   )

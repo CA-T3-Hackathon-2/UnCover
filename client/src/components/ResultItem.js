@@ -1,14 +1,20 @@
 import React from "react";
-import * as eventData from "../eventData.json";
 import EventHeading from "./styled/results/EventHeading";
 import EventLocation from "./styled/results/EventLocation";
 import EventDate from "./styled/results/EventDate";
 
-const ResultItem = () => {
+const ResultItem = ({ events }) => {
+  console.log(events);
   return (
     <div>
-      {eventData.events.map((targetEvent) => (
-        <div style={{ padding: "1rem 0" }}>
+      {events.map((targetEvent) => (
+        <div
+          key={targetEvent.id}
+          style={{
+            padding: "1.5rem",
+            boxShadow: "1px 2px 3px 0 rgba(0,0,0,0.2",
+          }}
+        >
           <EventHeading
             href={targetEvent.url}
             rel="noopener noreferrer"
@@ -21,7 +27,7 @@ const ResultItem = () => {
             {new Date(targetEvent.datetime_start).toLocaleString()} to{" "}
             {new Date(targetEvent.datetime_end).toLocaleString()}
           </EventDate>
-          <p>{targetEvent.description}</p>
+          <p style={{ fontSize: "1.4rem" }}>{targetEvent.description}</p>
         </div>
       ))}
     </div>

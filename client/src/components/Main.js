@@ -49,7 +49,7 @@ const Main = () => {
           </Link>
         </div>
         <div>
-          <img style={heroImageStyle} src={HeroImage} alt="hero-image" />
+          <img style={heroImageStyle} src={HeroImage} alt="" />
         </div>
       </div>
     </section>

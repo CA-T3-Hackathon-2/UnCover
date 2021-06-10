@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
 import Nav from "./components/Nav";
@@ -52,9 +52,11 @@ const App = () => {
             )}
           />
           <Route
-            exact 
+            exact
             path="/results"
-            render={(props) => <Results formData={formData} selectedlocation={location} />}
+            render={(props) => (
+              <Results formData={formData} selectedlocation={location} />
+            )}
           />
         </Switch>
       </Router>
