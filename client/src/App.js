@@ -1,10 +1,11 @@
 import React, { useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
-import Nav from "./components/Nav";
-import Main from "./components/Main";
-import Find from "./components/Find";
-import About from "./components/About";
+import Nav from './components/Nav';
+import Main from './components/Main';
+import Find from './components/Find';
+import About from './components/About';
+import Form from './components/Form'
 //utils
 import reducer from "./utils/reducer";
 
