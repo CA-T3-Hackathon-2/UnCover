@@ -8,6 +8,7 @@ import About from "./components/About";
 import Results from "./components/Results";
 //utils
 import reducer from "./utils/reducer";
+import CategoryBoxes from "./components/CategoryBoxes";
 
 const App = () => {
   const initialState = {
