@@ -8,7 +8,7 @@ const ResultItem = ({ events }) => {
   return (
     <div>
       {events.map((targetEvent) => (
-        <div style={{ padding: "1rem 0" }}>
+        <div key={targetEvent.id} style={{ padding: "1rem 0" }}>
           <EventHeading
             href={targetEvent.url}
             rel="noopener noreferrer"
