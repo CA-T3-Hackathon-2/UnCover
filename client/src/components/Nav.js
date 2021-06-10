@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Logo from '../assets/logo.png'
 
 const navStyle = {
   display: "flex",
@@ -38,7 +39,7 @@ const Nav = ({ selectedlocation, setLocation }) => {
 
   return (
     <nav style={navStyle}>
-      <h1>UnCover</h1>
+      <img src={Logo} alt="logo" width="300px"/>
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
       >
