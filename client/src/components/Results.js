@@ -1,10 +1,18 @@
 import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+import { categoryIds, locationToCoords } from "../utils/helpers";
+>>>>>>> 305c60f2a604cbbc60528a7e3ea85628e238059e
 
 const Results = (props) => {
-  console.log(props);
+  const {category, dateFrom, dateTo, locationDistance, price} = props.formData
+  const {selectedlocation} = props
+  const lat = locationToCoords[selectedlocation.toLowerCase()][0]
+  const lng = locationToCoords[selectedlocation.toLowerCase()][1]
+  const categoryID = categoryIds[category.split(' ').join('')]
 
   return (
     <section style={{ padding: "5rem" }}>
