@@ -1,7 +1,7 @@
 import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
-import { categoryIds, locationToCoords } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 const resultState = {
   loading: true,
@@ -76,13 +76,12 @@ const Results = (props) => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div style={{ display: "flex" }}>
-      <div
+    <section style={{ padding: "5rem" }}>
+      <p
         style={{
-          flex: "0.5",
-          padding: "10px",
-          overflowY: "scroll",
-          height: "80vh",
+          alignSelf: "flex-start",
+          paddingLeft: "3rem",
+          fontSize: "2rem",
         }}
       >
         <ResultItem events={events} />
@@ -90,7 +89,7 @@ const Results = (props) => {
       <div style={{ flex: "0.5", margin: "10px", overflow: "hidden" }}>
         <Map events={events} lat={lat} lng={lng} />
       </div>
-    </div>
+    </section>
   );
 };
 
