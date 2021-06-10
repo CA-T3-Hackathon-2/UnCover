@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 
 const PORT = process.env.PORT || 3001;
+const API_USERNAME = "uncover2";
+const API_PASSWORD = "6snxqhzyt4ry";
 
 const app = express();
 
@@ -23,13 +25,7 @@ router.post("/api", (req, res) => {
     `https://api.eventfinda.com.au/v2/events.json?rows=20&point=${lat},${lng}&category=${categoryID}&radius=${locationDistance}&price_max=${price}&start_date=${dateFrom}&end_date=${dateTo}`,
     {
       headers: {
-        Authorization:
-          "Basic " +
-          btoa(
-            process.env.REACT_APP_API_KEY +
-              ":" +
-              process.env.REACT_APP_API_PASSWORD
-          ),
+        Authorization: "Basic " + btoa(API_USERNAME + ":" + API_PASSWORD),
       },
     }
   )
