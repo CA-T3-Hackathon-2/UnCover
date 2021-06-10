@@ -1,14 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HeroButton from "./styled/HeroButton";
+import HeroImage from "../assets/hero.png";
+
+const heroImageStyle = {
+  backgroundImage: "url('../src/assets/hero.png')",
+  width: "80%",
+  height: "auto",
+};
 
 const Main = () => {
   return (
-    <section>
+    <section
+      style={{
+        width: "100%",
+        marginTop: "15rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div
         style={{
           display: "flex",
-          alignItems: "flex-start",
+          alignItems: "center",
           justifyContent: "space-around",
         }}
       >
@@ -18,7 +33,7 @@ const Main = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            width: "32rem",
+            margin: "0 10%",
             textAlign: "center",
           }}
         >
@@ -29,9 +44,13 @@ const Main = () => {
             Find events to match your interests! Start planning today, have a
             great time tomorrow!{" "}
           </p>
-          <HeroButton>Get Started</HeroButton>
+          <Link>
+            <HeroButton>Get Started</HeroButton>
+          </Link>
         </div>
-        <div>HERO IMAGE</div>
+        <div>
+          <img style={heroImageStyle} src={HeroImage} alt="hero-image" />
+        </div>
       </div>
     </section>
   );
