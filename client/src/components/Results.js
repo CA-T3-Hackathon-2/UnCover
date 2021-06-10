@@ -5,6 +5,7 @@ import ResultItem from "./ResultItem";
 const Results = (props) => {
   console.log(props);
 
+
   return (
     <div style={{ display: "flex" }}>
       <div

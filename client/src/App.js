@@ -52,9 +52,9 @@ const App = () => {
             )}
           />
           <Route
-            exact
+            exact 
             path="/results"
-            render={(props) => <Results formData={formData} />}
+            render={(props) => <Results formData={formData} selectedlocation={location} />}
           />
         </Switch>
       </Router>
