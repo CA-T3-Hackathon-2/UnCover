@@ -35,8 +35,8 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
           <Route exact path="/results" render={(props) => <Results />} />
-          {/* <Route exact path="/about" render={props => <About /> }  />
-					<Route exact path="/browse" render={props => <Find /> }  /> */}
+          <Route exact path="/about" render={(props) => <About />} />
+          {/* <Route exact path="/browse" render={props => <Find /> }  /> */}
         </Switch>
       </Router>
     </>
