@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeroButton = styled.button`
-  background: #ffff9e;
+  background: #f9efbe;
   font-size: 2rem;
   padding: 1.2rem 3rem;
   border-radius: 1rem;

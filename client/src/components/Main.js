@@ -38,7 +38,7 @@ const Main = () => {
           }}
         >
           <h1 style={{ fontSize: "6rem" }}>
-            Discover<p style={{ color: "#007bff" }}> events </p>in your city
+            Discover<p style={{ color: "#3b9bd1" }}> events </p>in your city
           </h1>
           <p style={{ marginTop: "3rem" }}>
             Find events to match your interests! Start planning today, have a

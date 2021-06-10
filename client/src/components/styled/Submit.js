@@ -6,7 +6,7 @@ const Submit = styled.button`
   font-size: 2rem;
   margin-top: 3rem;
   border-radius: 0.5rem;
-  background: #007bff;
+  background: #3b9bd1;
   color: #eee;
   border: none;
   outline: none;

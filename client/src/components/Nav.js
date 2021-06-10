@@ -18,7 +18,7 @@ const linkStyle = {
 };
 
 const linkActiveStyle = {
-  color: "#007bff",
+  color: "#3b9bd1",
 };
 
 const Nav = ({ selectedlocation, setLocation }) => {
@@ -72,7 +72,7 @@ const Nav = ({ selectedlocation, setLocation }) => {
         <label style={{ fontSize: "2rem" }}>Location</label>
         <select
           onChange={handleLocationSelect}
-          style={{ color: "#007bff", border: "none", background: "#fff" }}
+          style={{ color: "#3b9bd1", border: "none", background: "#fff" }}
           value={selectedlocation}
         >
           {allowedLocations.map((location) => {

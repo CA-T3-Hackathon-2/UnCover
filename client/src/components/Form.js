@@ -29,7 +29,7 @@ const Form = ({ formData, dispatch }) => {
   return (
     <FormDiv>
       <Header>
-        Find <span style={{ color: "#007bff" }}>your</span> next event
+        Find <span style={{ color: "#3b9bd1" }}>your</span> next event
       </Header>
       <StyledForm onChange={handleSubmit}>
         <Label htmlFor="category">Event Category</Label>
