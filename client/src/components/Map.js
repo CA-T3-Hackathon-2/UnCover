@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import * as eventData from "../eventData.json";
 
-const Map = () => {
+const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
-    latitude: -37.8136,
-    longitude: 144.9631,
+    latitude: lat,
+    longitude: lng,
     zoom: 12,
   });
 
@@ -36,7 +35,7 @@ const Map = () => {
         mapStyle={"mapbox://styles/rhys-morris/ckpqt4iel13v317q2faz5scmp"}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       >
-        {eventData.events.map((targetEvent) => (
+        {events.map((targetEvent) => (
           <Marker
             key={targetEvent.id}
             latitude={targetEvent.point.lat}

@@ -1,11 +1,11 @@
 import React from "react";
-import * as eventData from "../eventData.json";
 
-const ResultItem = () => {
+const ResultItem = ({ events }) => {
+  console.log(events);
   return (
     <div>
-      {eventData.events.map((targetEvent) => (
-        <div>
+      {events.map((targetEvent) => (
+        <div key={targetEvent.id}>
           <h5>
             <a href={targetEvent.url} rel="noopener noreferrer" target="_blank">
               {targetEvent.name}

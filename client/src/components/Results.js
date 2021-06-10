@@ -42,7 +42,6 @@ const Results = (props) => {
   const { loading, events, error } = resultsStore;
 
   React.useEffect(() => {
-    console.log("Mounted");
     fetchEvents();
   }, []);
 
@@ -74,6 +73,8 @@ const Results = (props) => {
 
   if (loading) return <p>Loading...</p>;
 
+  if (error) return <p>{error}</p>;
+
   return (
     <div style={{ display: "flex" }}>
       <div
@@ -84,7 +85,7 @@ const Results = (props) => {
           height: "80vh",
         }}
       >
-        <ResultItem />
+        <ResultItem events={events} />
       </div>
       <div style={{ flex: "0.5", margin: "10px", overflow: "hidden" }}>
         <Map events={events} lat={lat} lng={lng} />
