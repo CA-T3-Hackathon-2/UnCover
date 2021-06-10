@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Find from "./components/Find";
 import About from "./components/About";
-import Results from './components/Results'
+import Results from "./components/Results";
 //utils
 import reducer from "./utils/reducer";
 
@@ -34,6 +34,7 @@ const App = () => {
         <Nav selectedlocation={location} setLocation={setLocation} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
+          <Route exact path="/results" render={(props) => <Results />} />
           {/* <Route exact path="/about" render={props => <About /> }  />
 					<Route exact path="/browse" render={props => <Find /> }  /> */}
         </Switch>
