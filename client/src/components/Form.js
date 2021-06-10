@@ -30,7 +30,7 @@ const Form = ({ formData, dispatch }) => {
           value={category}
         >
           {categories.map((category) => {
-            return <option>{capitalize(category)}</option>;
+            return <option key={category}>{capitalize(category)}</option>;
           })}
         </select>
 
