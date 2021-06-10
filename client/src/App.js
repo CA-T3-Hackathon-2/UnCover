@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import Main from "./components/Main";
-
-const App = () => {
-  return (
-    <>
-      <Main />
-    </>
-  );
-=======
 import React, {useReducer, useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // components
@@ -51,9 +40,9 @@ const App = () => {
 					<Route exact path="/browse" render={props => <Find /> }  />
 				</Switch> */}
 			</Router>
+			<Main />
 		</>
 	);
->>>>>>> dev
 };
 
 export default App;
