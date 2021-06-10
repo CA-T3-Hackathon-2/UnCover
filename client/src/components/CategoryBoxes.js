@@ -3,32 +3,32 @@ import React from 'react';
 const CategoryBoxes = () => {
   const categories = [
     {
-      id: 1,
-      description: "Arts"
-    },
-    {
-      id: 3,
-      description: "Education"
-    },
-    {
       id: 6,
       description: "Music"
     },
     {
+      id: 1,
+      description: "Performing Arts"
+    },
+    {
       id: 7,
-      description: "Sports"
+      description: "Sports and Outdoors"
+    },
+    {
+      id: 190,
+      description: "Festivals and Lifestyle"
     },
     {
       id: 11,
       description: "Exhibitions"
     },
     {
-      id: 190,
-      description: "Lifestyle"
+      id: 3,
+      description: "Workshops and Education"
     },
     {
       id: 246,
-      description: "All"
+      description: "All Events"
     },
   ]
 
@@ -43,14 +43,16 @@ const CategoryBoxes = () => {
     border: "1px solid black",
     borderRadius: "5px",
     margin: "1rem",
-    padding: "1rem"
+    padding: "1rem",
+    height: "150px",
+    width: "150px"
   }
 
   return(
-    <div style={sectionBoxesStyles}>
-      <div>
+    <div >
+      <div style={sectionBoxesStyles}>
         {categories.map((category) => (
-          <p style={categoryBoxStyles} key={category.id}>{category.description}</p>
+          <span style={categoryBoxStyles} key={category.id}>{category.description}</span>
         ))}
       </div>
     </div>
