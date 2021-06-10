@@ -7,6 +7,7 @@ import Find from "./components/Find";
 import About from "./components/About";
 //utils
 import reducer from "./utils/reducer";
+import CategoryBoxes from "./components/CategoryBoxes";
 
 const App = () => {
   const initialState = {
