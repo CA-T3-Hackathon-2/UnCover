@@ -20,7 +20,7 @@ const linkActiveStyle = {
   color: "#007bff",
 };
 
-const Nav = ({ location, setLocation }) => {
+const Nav = ({ selectedlocation, setLocation }) => {
   const allowedLocations = [
     "Melbourne",
     "Sydney",
@@ -72,6 +72,7 @@ const Nav = ({ location, setLocation }) => {
         <select
           onChange={handleLocationSelect}
           style={{ color: "#007bff", border: "none", background: "#fff" }}
+          value={selectedlocation}
         >
           {allowedLocations.map((location) => {
             return <option key={location}>{location}</option>;
