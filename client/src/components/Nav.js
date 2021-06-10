@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Logo from '../assets/logo.png'
+import Logo from "../assets/logo.png";
 
 const navStyle = {
   display: "flex",
@@ -39,7 +39,7 @@ const Nav = ({ selectedlocation, setLocation }) => {
 
   return (
     <nav style={navStyle}>
-      <img src={Logo} alt="logo" width="300px"/>
+      <img src={Logo} alt="logo" width="200px" />
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
       >

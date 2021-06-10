@@ -16,7 +16,7 @@ const Find = ({ formData, dispatch }) => {
       }}
     >
       <Form formData={formData} dispatch={dispatch} />
-      <CategoryBoxes />
+      <CategoryBoxes dispatch={dispatch} />
     </section>
   );
 };
