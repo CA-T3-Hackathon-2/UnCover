@@ -4,15 +4,18 @@ const CategoryBoxes = () => {
   const categories = [
     {
       id: 6,
-      description: "Music"
+      description: "Music",
+      image: "url('../assets/music.svg')"
     },
     {
       id: 1,
-      description: "Performing Arts"
+      description: "Performing Arts",
+      image: "url('../assets/arts.svg')"
     },
     {
       id: 7,
-      description: "Sports and Outdoors"
+      description: "Sports and Outdoors",
+      image: "url('../assets/sports.svg')"
     },
     {
       id: 190,
@@ -24,17 +27,22 @@ const CategoryBoxes = () => {
     },
     {
       id: 3,
-      description: "Workshops and Education"
+      description: "Workshops and Education",
+      image: "url('../assets/education.svg')"
     },
     {
       id: 246,
-      description: "All Events"
+      description: "All Events",
+      image: "url('../assets/all.svg')"
     },
   ]
 
   const sectionBoxesStyles = {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%"
   }
 
   const categoryBoxStyles = {
@@ -49,12 +57,13 @@ const CategoryBoxes = () => {
   }
 
   return(
-    <div >
       <div style={sectionBoxesStyles}>
         {categories.map((category) => (
-          <span style={categoryBoxStyles} key={category.id}>{category.description}</span>
+          <span style={categoryBoxStyles} key={category.id}>
+            <img src={category.image} alt="category" />
+            {category.description}
+          </span>
         ))}
-      </div>
     </div>
   )
 }
