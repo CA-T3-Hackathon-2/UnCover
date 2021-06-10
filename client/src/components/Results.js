@@ -1,6 +1,7 @@
 import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
+import Loading from "./Loading";
 import { locationToCoords, categoryIds } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
@@ -72,7 +73,7 @@ const Results = (props) => {
   }, []);
 
   // Conditional returrns
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
   if (error) return <p>{error}</p>;
 
