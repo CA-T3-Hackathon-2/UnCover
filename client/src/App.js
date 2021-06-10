@@ -14,11 +14,11 @@ const App = () => {
 			<Router>
 				<h1>UnCover</h1>
 				<Nav />
-				<Switch>
+				{/* <Switch>
 					<Route exact path="/" render={props => <Main /> }  />
 					<Route exact path="/about" render={props => <About /> }  />
 					<Route exact path="/browse" render={props => <Find /> }  />
-				</Switch>
+				</Switch> */}
 			</Router>
 		</>
 	);
