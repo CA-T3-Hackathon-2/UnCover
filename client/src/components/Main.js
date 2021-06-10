@@ -14,7 +14,7 @@ const Main = () => {
     <section
       style={{
         width: "100%",
-        marginTop: "15rem",
+        marginTop: "5rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -38,7 +38,7 @@ const Main = () => {
           }}
         >
           <h1 style={{ fontSize: "6rem" }}>
-            Discover<p style={{ color: "blue" }}> events </p>in your city
+            Discover<p style={{ color: "#007bff" }}> events </p>in your city
           </h1>
           <p style={{ marginTop: "3rem" }}>
             Find events to match your interests! Start planning today, have a

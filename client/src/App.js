@@ -1,11 +1,19 @@
 import React, { useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
+<<<<<<< HEAD
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Find from './components/Find';
 import About from './components/About';
 import Form from './components/Form'
+=======
+import Nav from "./components/Nav";
+import Main from "./components/Main";
+import Find from "./components/Find";
+import About from "./components/About";
+import Results from "./components/Results";
+>>>>>>> ed226ec567af88c6e0227d3d4b70065c2b0435f7
 //utils
 import reducer from "./utils/reducer";
 import formReducer from "./utils/form-reducer";
@@ -53,8 +61,14 @@ const App = () => {
         <Nav selectedlocation={location} setLocation={setLocation} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
+<<<<<<< HEAD
           {/* <Route exact path="/about" render={props => <About /> }  /> */}
 					<Route exact path="/find" render={props => <Find {...props} location={location} formData={formData} setFormData={setFormData}  /> }  />
+=======
+          <Route exact path="/results" render={(props) => <Results />} />
+          {/* <Route exact path="/about" render={props => <About /> }  />
+					<Route exact path="/browse" render={props => <Find /> }  /> */}
+>>>>>>> ed226ec567af88c6e0227d3d4b70065c2b0435f7
         </Switch>
       </Router>
     </>
