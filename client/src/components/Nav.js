@@ -14,6 +14,7 @@ const linkStyle = {
   margin: " 0 2rem",
   color: "inherit",
   fontSize: "2rem",
+  textDecoration: "none",
 };
 
 const linkActiveStyle = {
