@@ -10,13 +10,13 @@ const locationToCoords = {
 };
 
 const categoryIds = {
-  music: 6,
-  performingArts: 1,
-  sportsAndOutdoors: 7,
-  festivalsAndLifestyle: 190,
-  exhibitions: 11,
-  workshopsAndEducation: 3,
-  allEvents: 246,
+  Music: 6,
+  PerformingArts: 1,
+  SportsAndOutdoors: 7,
+  FestivalsAndLifestyle: 190,
+  Exhibitions: 11,
+  WorkshopsAndEducation: 3,
+  AllEvents: 246,
 };
 
 function dateFormatted(date) {

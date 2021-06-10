@@ -1,9 +1,14 @@
 import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
+import { categoryIds, locationToCoords } from "../utils/helpers";
 
 const Results = (props) => {
-  console.log(props);
+  const {category, dateFrom, dateTo, locationDistance, price} = props.formData
+  const {selectedlocation} = props
+  const lat = locationToCoords[selectedlocation.toLowerCase()][0]
+  const lng = locationToCoords[selectedlocation.toLowerCase()][1]
+  const categoryID = categoryIds[category.split(' ').join('')]
 
 
   return (
