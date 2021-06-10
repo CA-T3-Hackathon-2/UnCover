@@ -19,4 +19,4 @@ const categoryIds = {
   allEvents: 246,
 };
 
-export { locationToCoords, categoryIds };
+export { locationToCoords, categoryIds};

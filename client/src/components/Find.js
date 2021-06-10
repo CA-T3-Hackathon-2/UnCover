@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Form from './Form'
-import CategoryBox from './CategoryBox'
+import CategoryBoxes from './CategoryBoxes'
 
-const Find = (props) => {
+const Find = ( {location} ) => {
 
   return(
     <>
-      <Form />
+      <Form location={location} />
       <CategoryBoxes />
     </>
   )

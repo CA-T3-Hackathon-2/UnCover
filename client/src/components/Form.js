@@ -1,6 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-const Form = () => {
+import { categoryIds } from '../utils/helpers';
+import capitalize from '../utils/capitalize';
+
+const Form = ({ location }) => {
+
+  const categories = Object.keys(categoryIds);
+
+  const formStyles = {
+    display: "flex",
+    flexDirection: "column",
+    margin: "3em"
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
   }
@@ -19,27 +31,31 @@ const Form = () => {
 
   return (
     <div>
-      <h2>Find your next event</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 style={{textAlign:"center"} }>Find your next event</h2>
+      <form style={formStyles} onSubmit={handleSubmit}>
         <label htmlFor="category">Event Category</label>
         <select onChange={handleCategorySelection}>
-          <option value="" >Select Category</option>
+          {categories.map((category) => {
+              return <option>{capitalize(category)}</option>;
+            })}
         </select>
 
-        <label htmlFor="datemin">Date From</label>
-        <input type="date" id="datemin" name="datemin" />
-        <label htmlFor="datemax">Date To</label>
-        <input type="date" id="datemax" name="datemax" />
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between", margin:"20px 0" } }>
+          <label htmlFor="datemin">Date From</label>
+          <input type="date" id="datemin" name="datemin" />
+          <label htmlFor="datemax">Date To</label>
+          <input type="date" id="datemax" name="datemax" />
+        </div>
 
-        <label htmlFor="location">Location Distance</label>
-        <select onChange={handleLocationDistance}>
-          <option value="">Select </option>
-        </select>
+        <div style={{display:"flex", flexDirection:"row" } }>
+          <label htmlFor="locationDistance">Location Distance (km)</label>
+          <input type="number" onChange={handleLocationDistance}>
+          </input>
 
-        <label htmlFor="price">Price</label>
-        <select onChange={handlePrice}>
-          <option value="">Select Maximum Price</option>
-        </select>
+          <label htmlFor="price">Max price: $</label>
+          <input type="number" onChange={handlePrice}>
+          </input>
+        </div>
 
       </form>
     </div>
