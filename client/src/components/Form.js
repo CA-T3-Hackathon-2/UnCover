@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { categoryIds, dateFormatted } from "../utils/helpers";
 // utils
 import capitalize from "../utils/capitalize";
-import { Link } from "react-router-dom";
+// styled components
 import {
   FormFieldColumn,
   FormRow,
@@ -13,6 +13,9 @@ import {
   Label,
 } from "./styled/FormComponents";
 import Header from "./styled/Header";
+import FormDiv from "./styled/form/FormDiv"
+import StyledForm from "./styled/form/StyledForm"
+import Submit from "./styled/Submit"
 
 const Form = ({ formData, dispatch }) => {
   const categories = Object.keys(categoryIds);
