@@ -30,7 +30,6 @@ const Nav = ({ selectedlocation, setLocation }) => {
     "Canberra",
     "Perth",
     "Adelaide",
-    "Hobart",
   ];
 
   const handleLocationSelect = (e) => {
