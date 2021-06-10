@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+// data
 import { categoryIds, dateFormatted } from "../utils/helpers";
-import Submit from "./styled/Submit";
+// utils
 import capitalize from "../utils/capitalize";
 import { Link } from "react-router-dom";
 import {
@@ -16,29 +18,23 @@ const Form = ({ formData, dispatch }) => {
   const categories = Object.keys(categoryIds);
   const { category, dateFrom, dateTo, locationDistance, price } = formData;
 
-  const formStyles = {
-    display: "flex",
-    flexDirection: "column",
-    margin: "3em",
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    // hit the API
   };
 
   return (
-    <div style={{ width: "75rem" }}>
+    <FormDiv>
       <Header>
         Find <span style={{ color: "#007bff" }}>your</span> next event
       </Header>
-      <form style={formStyles} onChange={handleSubmit}>
+      <StyledForm onChange={handleSubmit}>
         <Label htmlFor="category">Event Category</Label>
         <Select
           onChange={(e) =>
             dispatch({ type: "setCategory", data: e.target.value })
           }
-          value={category}
-        >
+          value={category}>
           {categories.map((category) => {
             return <option key={category}>{capitalize(category)}</option>;
           })}
@@ -100,8 +96,8 @@ const Form = ({ formData, dispatch }) => {
         <Link to="/results">
           <Submit>Submit</Submit>
         </Link>
-      </form>
-    </div>
+      </StyledForm>
+    </FormDiv>
   );
 };
 
