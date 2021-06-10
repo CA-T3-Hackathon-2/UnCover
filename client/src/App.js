@@ -30,7 +30,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Nav location={location} setLocation={setLocation} />
+        <Nav selectedlocation={location} setLocation={setLocation} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
           {/* <Route exact path="/about" render={props => <About /> }  />
