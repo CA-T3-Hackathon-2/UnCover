@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Find from "./components/Find";
+import Results from "./components/Results";
 //utils
 import reducer from "./utils/reducer";
 
@@ -46,6 +47,7 @@ const App = () => {
               <Find {...props} formData={formData} dispatch={dispatch} />
             )}
           />
+          <Route exact path="/results" render={(props) => <Results />} />
         </Switch>
       </Router>
     </>
