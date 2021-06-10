@@ -1,0 +1,20 @@
+html {
+    /* 1 rem = 10px */
+    font-size: 62.5%;   
+}
+
+body {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
