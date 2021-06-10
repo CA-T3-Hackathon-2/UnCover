@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { categoryIds, dateFormatted } from "../utils/helpers";
 // utils
 import capitalize from "../utils/capitalize";
-// styled components
-import Submit from "./styled/Submit";
-import FormDiv from "./styled/form/FormDiv";
-import FormHeading from "./styled/form/FormHeading";
-import StyledForm from "./styled/form/StyledForm";
-import FormHorizontalDiv from "./styled/form/FormHorizontalDiv";
-import FormVerticalDiv from "./styled/form/FormVerticalDiv";
-
+import { Link } from "react-router-dom";
+import {
+  FormFieldColumn,
+  FormRow,
+  Select,
+  Input,
+  Label,
+} from "./styled/FormComponents";
+import Header from "./styled/Header";
 
 const Form = ({ formData, dispatch }) => {
   const categories = Object.keys(categoryIds);
@@ -24,10 +25,12 @@ const Form = ({ formData, dispatch }) => {
 
   return (
     <FormDiv>
-      <FormHeading>Find your next event</FormHeading>
-      <StyledForm>
-        <label htmlFor="category">Event Category</label>
-        <select
+      <Header>
+        Find <span style={{ color: "#007bff" }}>your</span> next event
+      </Header>
+      <StyledForm onChange={handleSubmit}>
+        <Label htmlFor="category">Event Category</Label>
+        <Select
           onChange={(e) =>
             dispatch({ type: "setCategory", data: e.target.value })
           }
@@ -35,13 +38,12 @@ const Form = ({ formData, dispatch }) => {
           {categories.map((category) => {
             return <option key={category}>{capitalize(category)}</option>;
           })}
-        </select>
+        </Select>
 
-        // col 1
-        <FormHorizontalDiv>
-          <FormVerticalDiv style={{marginRight: "1rem"} }>
-            <label htmlFor="datemin">Date From</label>
-            <input
+        <FormRow>
+          <FormFieldColumn style={{ marginRight: "1rem" }}>
+            <Label htmlFor="datemin">Date From</Label>
+            <Input
               type="date"
               id="datemin"
               name="datemin"
@@ -51,10 +53,10 @@ const Form = ({ formData, dispatch }) => {
               }
               min={dateFormatted(new Date())}
             />
-          </FormVerticalDiv>
-          <FormVerticalDiv style={{marginLeft: "1rem"} }>
-            <label htmlFor="datemax">Date To</label>
-            <input
+          </FormFieldColumn>
+          <FormFieldColumn style={{ marginLeft: "1rem" }}>
+            <Label htmlFor="datemax">Date To</Label>
+            <Input
               type="date"
               id="datemax"
               name="datemax"
@@ -64,32 +66,33 @@ const Form = ({ formData, dispatch }) => {
               }
               min={dateFormatted(new Date())}
             />
-          </FormVerticalDiv>
-        </FormHorizontalDiv>
-        
-        // col 2
-        <FormHorizontalDiv>
-          <FormVerticalDiv style={{marginRight: "1rem"}}>
-            <label htmlFor="locationDistance">Location Distance (km)</label>
-            <input
+          </FormFieldColumn>
+        </FormRow>
+
+        <FormRow>
+          <FormFieldColumn style={{ marginRight: "1rem" }}>
+            <Label htmlFor="locationDistance">Location Distance (km)</Label>
+            <Input
               type="number"
               onChange={(e) =>
                 dispatch({ type: "setLocationDistance", data: e.target.value })
               }
               value={locationDistance}
+              min={1}
             />
-          </FormVerticalDiv>
-          <FormVerticalDiv style={{marginLeft: "1rem"}}>
-            <label htmlFor="price">Max price: $</label>
-            <input
+          </FormFieldColumn>
+          <FormFieldColumn style={{ marginLeft: "1rem" }}>
+            <Label htmlFor="price">Max price ($)</Label>
+            <Input
               type="number"
               onChange={(e) =>
                 dispatch({ type: "setPrice", data: e.target.value })
               }
               value={price}
+              min={1}
             />
-          </FormVerticalDiv>
-        </FormHorizontalDiv>
+          </FormFieldColumn>
+        </FormRow>
         <Link to="/results">
           <Submit>Submit</Submit>
         </Link>
