@@ -1,31 +1,62 @@
 const reducer = (state, action) => {
-  switch(action.type){
-    case 'setLocation': {
+  switch (action.type) {
+    case "setLocation": {
       return {
         ...state,
-        location: action.data
-      }
+        location: action.data,
+      };
     }
-    case 'setLoading': {
+    case "setLoading": {
       return {
         ...state,
-        loading: action.data
-      }
+        loading: action.data,
+      };
     }
-    case 'setError': {
+    case "setError": {
       return {
         ...state,
-        error: action.data
-      }
+        error: action.data,
+      };
     }
-    case 'setEvents': {
+    case "setEvents": {
       return {
         ...state,
-        events: action.data
-      }
+        events: action.data,
+      };
     }
-    default: return state
+    case "setCategory": {
+      return {
+        ...state,
+        category: action.data,
+      };
+    }
+    case "setDateFrom": {
+      return {
+        ...state,
+        dateFrom: action.data,
+      };
+    }
+    case "setDateTo": {
+      return {
+        ...state,
+        dateTo: action.data,
+      };
+    }
+    case "setLocationDistance": {
+      return {
+        ...state,
+        locationDistance: action.data,
+      };
+    }
+    case "setPrice": {
+      return {
+        ...state,
+        price: action.data,
+      };
+    }
+    default:
+      return state;
   }
-}
+};
 
 export default reducer;
