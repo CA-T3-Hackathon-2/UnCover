@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Find from "./components/Find";
 import About from "./components/About";
+import Results from './components/Results'
 //utils
 import reducer from "./utils/reducer";
 
