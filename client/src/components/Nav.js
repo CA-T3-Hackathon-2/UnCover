@@ -34,6 +34,16 @@ const Nav = ({ selectedlocation, setLocation }) => {
   ];
 
   const handleLocationSelect = (e) => {
+    // Need a way to make sure location is being set correctly
+    if (window.location.href.match(/results/)) {
+      if (
+        window.confirm(
+          "Are you sure you wish to update location? This will remove current events."
+        )
+      ) {
+        window.location.href = "http://localhost:3000/find";
+      }
+    }
     setLocation(e.target.value);
   };
 

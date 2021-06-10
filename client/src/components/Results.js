@@ -42,10 +42,6 @@ const Results = (props) => {
 
   const { loading, events, error } = resultsStore;
 
-  React.useEffect(() => {
-    fetchEvents();
-  }, []);
-
   const fetchEvents = async () => {
     try {
       const response = await fetch("/api", {
@@ -71,6 +67,10 @@ const Results = (props) => {
       console.error(error);
     }
   };
+
+  React.useEffect(() => {
+    fetchEvents();
+  }, []);
 
   if (loading) return <p>Loading...</p>;
 

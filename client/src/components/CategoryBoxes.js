@@ -82,6 +82,7 @@ const CategoryBoxes = ({ dispatch }) => {
               dispatch({ type: "setCategory", data: category.description })
             }
             to="/results"
+            key={category.id}
             className="hover-over"
           >
             <div style={categoryBoxStyles} key={category.id}>
