@@ -44,7 +44,7 @@ const Main = () => {
             Find events to match your interests! Start planning today, have a
             great time tomorrow!{" "}
           </p>
-          <Link>
+          <Link to="/find">
             <HeroButton>Get Started</HeroButton>
           </Link>
         </div>
