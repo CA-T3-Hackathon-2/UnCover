@@ -21,3 +21,8 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.hover-over:hover {
+    transition: .2s;
+    transform: scale(1.03) translateY(-5px);
+}
