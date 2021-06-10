@@ -1,12 +1,12 @@
 import React from "react";
+import Main from "./components/Main";
 
 const App = () => {
-
-	return (
-		<>
-			<h1 style={{textAlign: 'center' }}>UnCover</h1>
-		</>
-	);
+  return (
+    <>
+      <Main />
+    </>
+  );
 };
 
 export default App;
