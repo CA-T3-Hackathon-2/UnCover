@@ -4,7 +4,7 @@ import EventLocation from "./styled/results/EventLocation";
 import EventDate from "./styled/results/EventDate";
 
 const ResultItem = ({ events }) => {
-  console.log(events);
+  // console.log(events);
   return (
     <div>
       {events.map((targetEvent) => (

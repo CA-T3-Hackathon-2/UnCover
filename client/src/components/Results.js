@@ -36,10 +36,9 @@ const Results = (props) => {
   const { selectedlocation } = props;
   const lat = locationToCoords[selectedlocation.toLowerCase()][0];
   const lng = locationToCoords[selectedlocation.toLowerCase()][1];
-  const categoryID = categoryIds[category.split(" ").join("")];
+  const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
-
   const { loading, events, error } = resultsStore;
 
   const fetchEvents = async () => {
@@ -60,8 +59,8 @@ const Results = (props) => {
         }),
       });
       const responseData = await response.json();
-      dispatch({ type: "success", data: responseData.events });
       console.log(responseData);
+      dispatch({ type: "success", data: responseData.events });
     } catch (error) {
       dispatch({ type: "failure", data: "Error fetching data from API" });
       console.error(error);
@@ -72,6 +71,7 @@ const Results = (props) => {
     fetchEvents();
   }, []);
 
+  // Conditional returrns
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>{error}</p>;
