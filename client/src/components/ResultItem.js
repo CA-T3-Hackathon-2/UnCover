@@ -5,7 +5,7 @@ import EventDate from "./styled/results/EventDate";
 import Submit from "./styled/Submit";
 import { Link } from "react-router-dom";
 
-const ResultItem = ({ events }) => {
+const ResultItem = ({ events, handleUpdateCoords }) => {
   if (events.length === 0) {
     return (
       <div style={{ width: "60%" }}>
@@ -28,6 +28,8 @@ const ResultItem = ({ events }) => {
           style={{
             padding: "1.5rem",
             boxShadow: "1px 2px 3px 0 rgba(0,0,0,0.2",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <EventHeading
@@ -43,6 +45,19 @@ const ResultItem = ({ events }) => {
             {new Date(targetEvent.datetime_end).toLocaleString()}
           </EventDate>
           <p style={{ fontSize: "1.4rem" }}>{targetEvent.description}</p>
+          <Submit
+            style={{
+              marginTop: "0.5rem",
+              padding: ".5rem",
+              width: "80%",
+              alignSelf: "flex-start",
+              color: "#444",
+              background: "#f9efbe",
+            }}
+            onClick={() => handleUpdateCoords(targetEvent)}
+          >
+            Show on map
+          </Submit>
         </div>
       ))}
     </div>
