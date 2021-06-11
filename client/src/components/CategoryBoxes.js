@@ -4,6 +4,8 @@ import ArtsImage from "../assets/arts.svg";
 import MusicImage from "../assets/music.svg";
 import SportsImage from "../assets/sports.svg";
 import EducationImage from "../assets/education.svg";
+import LifestyleImage from "../assets/lifestyle.svg";
+import ExhibitionsImage from "../assets/exhibitions.svg";
 import Header from "./styled/Header";
 import { Link } from "react-router-dom";
 
@@ -27,10 +29,12 @@ const CategoryBoxes = ({ dispatch }) => {
     {
       id: 190,
       description: "Festivals and Lifestyle",
+      image: LifestyleImage
     },
     {
       id: 11,
       description: "Exhibitions",
+      image: ExhibitionsImage
     },
     {
       id: 3,
