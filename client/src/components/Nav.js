@@ -27,10 +27,11 @@ const Nav = ({ selectedlocation, setLocation }) => {
     "Melbourne",
     "Sydney",
     "Brisbane",
-    "Canberra",
+    "Darwin",
     "Perth",
     "Adelaide",
-  ];
+    "Newcastle",
+  ].sort((a, b) => (a[0] > b[0] ? 1 : -1));
 
   const handleLocationSelect = (e) => {
     // Need a way to make sure location is being set correctly
