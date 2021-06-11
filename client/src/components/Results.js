@@ -2,6 +2,7 @@ import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
 import Loading from "./Loading";
+import PageBox from "./PageBox";
 import { locationToCoords, categoryIds } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
@@ -9,6 +10,8 @@ const resultState = {
   loading: true,
   events: null,
   error: null,
+  eventCount: 0,
+  pageCount: 0,
 };
 
 const eventsReducer = (state, action) => {
@@ -18,13 +21,20 @@ const eventsReducer = (state, action) => {
         ...state,
         loading: false,
         error: null,
-        events: action.data,
+        events: action.data.events,
+        eventCount: action.data.count,
+        pageCount: action.data.pageCount,
       };
     case "failure":
       return {
         ...state,
         loading: false,
         error: action.data,
+      };
+    case "startRequest":
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;
@@ -39,11 +49,17 @@ const Results = (props) => {
   const lng = locationToCoords[selectedlocation.toLowerCase()][1];
   const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
+  // State management
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
-  const { loading, events, error } = resultsStore;
+  const [currentPage, setCurrentPage] = React.useState(1);
+
+  const { loading, events, error, pageCount } = resultsStore;
+  const offset = currentPage * 10 - 10;
+  console.log(offset);
 
   const fetchEvents = async () => {
     try {
+      dispatch({ type: "startRequest" });
       const response = await fetch("/api", {
         method: "POST",
         headers: {
@@ -57,11 +73,24 @@ const Results = (props) => {
           dateTo,
           locationDistance,
           price,
+          offset,
         }),
       });
       const responseData = await response.json();
       console.log(responseData);
-      dispatch({ type: "success", data: responseData.events });
+
+      // Work out page counts for pagination
+      let pageCount = Math.floor(responseData["@attributes"].count / 10);
+      if (responseData["@attributes"].count % 10 !== 0) pageCount += 1;
+
+      dispatch({
+        type: "success",
+        data: {
+          events: responseData.events,
+          count: responseData["@attributes"].count,
+          pageCount,
+        },
+      });
     } catch (error) {
       dispatch({ type: "failure", data: "Error fetching data from API" });
       console.error(error);
@@ -70,20 +99,28 @@ const Results = (props) => {
 
   React.useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [currentPage]);
 
   // Conditional returrns
   if (loading) return <Loading />;
 
-  if (error) return <p>{error}</p>;
+  if (error)
+    return <p style={{ marginTop: "10rem", fontSize: "4rem" }}>{error}</p>;
+
+  // Set up pageNumArray to map over
+  const pageNumArray = [];
+  for (let i = 1; i <= pageCount; i++) {
+    pageNumArray.push(i);
+  }
 
   return (
-    <section style={{ padding: " 1rem 3rem" }}>
-      <p style={{ marginTop: "3rem", paddingLeft: "5rem", fontSize: "1.8rem" }}>
+    <section style={{ padding: " 1rem 3rem", height: "75vh" }}>
+      <p style={{ marginTop: "2rem", paddingLeft: "5rem", fontSize: "1.8rem" }}>
         <Link to="/find" style={{ color: "inherit", textDecoration: "none" }}>
           Back
-        </Link>{" "}
-        > Results
+        </Link>
+        {"  >  "}
+        Results
       </p>
       <div style={{ display: "flex" }}>
         <div
@@ -102,6 +139,20 @@ const Results = (props) => {
         <div style={{ flex: "0.6", margin: "10px", overflow: "hidden" }}>
           <Map events={events} lat={lat} lng={lng} />
         </div>
+      </div>
+      <div
+        style={{ display: "flex", alignItems: "center", paddingLeft: "6rem" }}
+      >
+        {pageNumArray.map((page, i) => {
+          return (
+            <PageBox
+              key={i}
+              page={page}
+              currentPage={currentPage}
+              handleClick={() => setCurrentPage(page)}
+            />
+          );
+        })}
       </div>
     </section>
   );
