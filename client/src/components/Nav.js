@@ -1,15 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+// assets
 import Logo from "../assets/logo.png";
-
-const navStyle = {
-  display: "flex",
-  width: "100%",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0 10rem",
-  paddingTop: "5rem",
-};
+// styles components
+import {NavStyle, NavSelectStyle, NavLabelStyle, NavImg} from "./styled/nav/NavStyle";
 
 const linkStyle = {
   margin: " 0 2rem",
@@ -48,8 +42,8 @@ const Nav = ({ selectedlocation, setLocation }) => {
   };
 
   return (
-    <nav style={navStyle}>
-      <img src={Logo} alt="logo" width="200px" />
+    <NavStyle>
+      <NavLink exact to="/"><NavImg src={Logo} alt="logo" width="200px" /></NavLink>
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
       >
@@ -80,18 +74,17 @@ const Nav = ({ selectedlocation, setLocation }) => {
         </li>
       </ul>
       <form style={{ display: "flex", flexDirection: "column" }}>
-        <label style={{ fontSize: "2rem" }}>Location</label>
-        <select
+        <NavLabelStyle>Location</NavLabelStyle>
+        <NavSelectStyle
           onChange={handleLocationSelect}
-          style={{ color: "#3b9bd1", border: "none", background: "#fff" }}
           value={selectedlocation}
         >
           {allowedLocations.map((location) => {
             return <option key={location}>{location}</option>;
           })}
-        </select>
+        </NavSelectStyle>
       </form>
-    </nav>
+    </NavStyle>
   );
 };
 
