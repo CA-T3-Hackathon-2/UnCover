@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Header from './styled/Header'
 import AboutImage from '../assets/about-us.png'
 import HandPoint from '../assets/hand-point.png'
@@ -32,29 +33,37 @@ const About = () => {
           <TeamHandAndBox>
             <HandStyles src={HandPoint} alt="hand-point" />
             <BoxStyles>
+            <Link to={{pathname: "https://github.com/chivoi"}} target="_blank">
               <h1 style={{color: "#3b9bd1"}}>Ana</h1>
-              <span>Hangs out with cats and sings and plays keys with Renelophus.</span>
+            </Link>
+              <span>Hangs out with cats, and sings and plays keys with Renelophus.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandThumbUp} alt="hand-thumb-up" />
             <BoxStyles>
+            <Link to={{pathname: "https://github.com/irahrosete"}} target="_blank">
               <h1 style={{color: "#3b9bd1"}}>Irah</h1>
-              <span>Loves her coffee and dabbles with graphic design and digital illustration.</span>
+            </Link>
+              <span>Loves coffee, and dabbles with graphic design and digital illustration.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandCool} alt="hand-cool" />
             <BoxStyles>
+            <Link to={{pathname: "https://github.com/DarkoAU"}} target="_blank">
               <h1 style={{color: "#3b9bd1"}}>Darko</h1>
-              <span>Enjoys Roku gin and loves creating mischief.</span>
+            </Link>
+              <span>Enjoys Roku gin, and loves creating mischief.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandRockstar} alt="hand-rockstar" />
             <BoxStyles>
+            <Link to={{pathname: "https://github.com/Rhys-Morris"}} target="_blank">
               <h1 style={{color: "#3b9bd1"}}>Rhys</h1>
-              <span>Restores mid-century furnitures and is a small animal veterinarian.</span>
+            </Link>
+              <span>Restores mid-century furnitures, and is a small animal veterinarian.</span>
             </BoxStyles>
           </TeamHandAndBox>
 
