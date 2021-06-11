@@ -12,7 +12,7 @@ const NavStyle = styled.div`
     padding: 5rem 3rem 0 5rem;
   }
   @media screen and (max-width: 500px) { // phone
-    
+    padding: 2rem 1rem 0 1rem;
   }
 `
 

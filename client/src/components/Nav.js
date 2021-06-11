@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 // assets
+import { MdClose } from "react-icons/md";
+import { FiMenu } from "react-icons/fi";
 import Logo from "../assets/logo.png";
-// styles components
+import '../index.css'
+// styled components
 import {NavStyle, NavSelectStyle, NavLabelStyle, NavImg} from "./styled/nav/NavStyle";
 
 const linkStyle = {
@@ -12,11 +15,7 @@ const linkStyle = {
   textDecoration: "none",
 };
 
-const linkActiveStyle = {
-  color: "#3b9bd1",
-};
-
-const Nav = ({ selectedlocation, setLocation }) => {
+const Nav = ({ selectedlocation, hamburgerOpen, dispatch }) => {
   const allowedLocations = [
     "Melbourne",
     "Sydney",
@@ -26,6 +25,10 @@ const Nav = ({ selectedlocation, setLocation }) => {
     "Adelaide",
     "Newcastle",
   ].sort((a, b) => (a[0] > b[0] ? 1 : -1));
+
+  const linkActiveStyle = {
+    color: [hamburgerOpen ? "#000000" : "#3b9bd1"],
+  };
 
   const handleLocationSelect = (e) => {
     // Need a way to make sure location is being set correctly
@@ -38,14 +41,23 @@ const Nav = ({ selectedlocation, setLocation }) => {
         window.location.href = "http://localhost:3000/find";
       }
     }
-    setLocation(e.target.value);
+    dispatch( {type: "setLocation", data: e.target.value} );
   };
+  
+  const toggleData = (data) => !data
+
+  const handleToggle = () => {
+    dispatch( {type: "setHamburgerOpen", data: 
+    toggleData(hamburgerOpen) } );
+    
+  }
 
   return (
     <NavStyle>
       <NavLink exact to="/"><NavImg src={Logo} alt="logo" width="200px" /></NavLink>
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
+        className={`menuNav ${hamburgerOpen? " showMenu":" "  }`}
       >
         <li>
           <NavLink style={linkStyle} activeStyle={linkActiveStyle} exact to="/">
@@ -84,6 +96,9 @@ const Nav = ({ selectedlocation, setLocation }) => {
           })}
         </NavSelectStyle>
       </form>
+      {/* hamburger menu */}
+      <button style={{border: "none", background: "transparent", fontSize: "2.5rem"} } onClick={handleToggle}>
+        {hamburgerOpen ? (<MdClose />) : <FiMenu />}</button>
     </NavStyle>
   );
 };

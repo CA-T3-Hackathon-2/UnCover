@@ -29,6 +29,7 @@ const App = () => {
     dateTo: dateFormatted(futureDate),
     locationDistance: 10,
     price: 50,
+    hamburgerOpen: false
   };
 
   const [store, dispatch] = useReducer(reducer, initialState);
@@ -40,6 +41,7 @@ const App = () => {
     locationDistance,
     price,
     categories,
+    hamburgerOpen
   } = store;
   const formData = { category, dateFrom, dateTo, locationDistance, price };
 
@@ -53,7 +55,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Nav selectedlocation={location} setLocation={setLocation} />
+        <Nav selectedlocation={location} hamburgerOpen={hamburgerOpen} dispatch={dispatch} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
           {/* <Route exact path="/about" render={props => <About /> }  /> */}

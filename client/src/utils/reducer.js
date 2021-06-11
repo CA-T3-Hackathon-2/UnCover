@@ -54,6 +54,12 @@ const reducer = (state, action) => {
         price: action.data,
       };
     }
+    case "setHamburgerOpen": {
+      return {
+        ...state,
+        hamburgerOpen: action.data,
+      };
+    }
     default:
       return state;
   }

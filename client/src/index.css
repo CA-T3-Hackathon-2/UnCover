@@ -26,3 +26,57 @@ body {
     transition: .2s;
     transform: scale(1.03) translateY(-5px);
 }
+
+/* hamburger menu */
+.navBar {
+    /* position: relative; */
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .navBar button {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .menuNav {
+    visibility: hidden;
+    overflow-y: scroll;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    background: rgb(35, 147, 201);
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 0;
+    overflow: hidden;
+    max-width: 60%;
+    z-index: 9;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .menuNav.showMenu {
+    width: 100%;
+    visibility: visible;
+    transition: 0.3s ease-in-out;
+    flex-direction: column;
+  }
+  
+  a {
+    display: block;
+    padding: 10px 40px;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .menuNav li:first-child {
+    margin-top: 7rem;
+  }
