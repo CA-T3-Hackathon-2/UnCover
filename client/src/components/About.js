@@ -7,15 +7,10 @@ import HandCool from '../assets/hand-cool.png'
 import HandRockstar from '../assets/hand-rockstar.png'
 
 //styled components
-import {AboutMainBox, AboutColumn} from './styled/AboutStyles'
+import {AboutMainBox, AboutColumn, AboutImagePosition} from './styled/AboutStyles'
 
 const handStyles = {
   width: "10%",
-  height: "auto"
-}
-
-const aboutImageStyles = {
-  width: "50%",
   height: "auto"
 }
 
@@ -39,7 +34,7 @@ const About = () => {
             <li>Select additional filters for Category, Date, Distance and Price </li>
             <li>Click 'Submit' and let UnCover take you on a journey!</li>
           </ol>
-          <img style={aboutImageStyles} src={AboutImage} alt="person-sitting-with-laptop" />
+          <AboutImagePosition src={AboutImage} alt="person-sitting-with-laptop" />
         </AboutColumn>
         <AboutColumn>
           <Header style={{ marginBottom: "3rem" }}>Meet the <span style={{ color: "#3b9bd1" }}>Team</span></Header>

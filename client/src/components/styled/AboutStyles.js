@@ -8,6 +8,15 @@ const AboutMainBox = styled.div`
 
 const AboutColumn = styled.div`
   margin: 0 3rem;
+  display: flex;
+  flex-direction: column;
 `
 
-export { AboutMainBox, AboutColumn } 
+const AboutImagePosition = styled.img`
+  width: 50%;
+  height: auto;
+  margin-top: 2rem;
+  align-self: center;
+`
+
+export { AboutMainBox, AboutColumn, AboutImagePosition } 
