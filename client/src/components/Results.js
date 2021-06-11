@@ -58,7 +58,7 @@ const Results = (props) => {
   );
 
   const { loading, events, error, pageCount } = resultsStore;
-  const offset = currentPage * 10 - 10;
+  const offset = currentPage * 20 - 20;
 
   // API Call to server
   const fetchEvents = async () => {
@@ -84,8 +84,8 @@ const Results = (props) => {
       console.log(responseData);
 
       // Work out page counts for pagination
-      let pageCount = Math.floor(responseData["@attributes"].count / 10);
-      if (responseData["@attributes"].count % 10 !== 0) pageCount += 1;
+      let pageCount = Math.floor(responseData["@attributes"].count / 20);
+      if (responseData["@attributes"].count % 20 !== 0) pageCount += 1;
 
       dispatch({
         type: "success",
