@@ -5,6 +5,8 @@ import Loading from "./Loading";
 import PageBox from "./PageBox";
 import { locationToCoords, categoryIds } from "../utils/helpers";
 import { Link } from "react-router-dom";
+// assets
+import Attribution from "../assets/attribution-eventfinda.gif";
 
 const resultState = {
   loading: true,
@@ -150,18 +152,22 @@ const Results = (props) => {
         </div>
       </div>
       <div
-        style={{ display: "flex", alignItems: "center", paddingLeft: "6rem" }}
+        style={{ display: "flex", alignItems: "center", justifyContent:"space-between", paddingLeft: "6rem"}}
       >
-        {pageNumArray.map((page, i) => {
-          return (
-            <PageBox
-              key={i}
-              page={page}
-              currentPage={currentPage}
-              handleClick={() => setCurrentPage(page)}
-            />
-          );
-        })}
+        <div
+          style={{ display: "flex", flexDirection:"row" }}>
+          {pageNumArray.map((page, i) => {
+            return (
+              <PageBox
+                key={i}
+                page={page}
+                currentPage={currentPage}
+                handleClick={() => setCurrentPage(page)}
+              />
+            );
+          })}
+        </div>
+        <img style={{justifySelf: "flex-end"}} src={Attribution} alt="powered by Eventfinda" width="200px" />
       </div>
     </section>
   );

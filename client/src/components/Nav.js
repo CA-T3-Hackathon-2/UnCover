@@ -50,7 +50,7 @@ const Nav = ({ selectedlocation, setLocation }) => {
 
   return (
     <nav style={navStyle}>
-      <img src={Logo} alt="logo" width="200px" />
+      <NavLink exact to="/"><img src={Logo} alt="logo" width="200px" /></NavLink>
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
       >
