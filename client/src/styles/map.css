@@ -16,8 +16,17 @@
 
 }
 
+button:focus {outline:0;}
+
 .markerBtnImg {
     width: 30px; 
     height: 30px;
 
 }
+
+.popup-div {
+    width: 25vw;
+    height: 28vh;
+    font-size: 14px;
+    color: rgb(35, 37, 37)
+  }
