@@ -11,12 +11,12 @@ const locationToCoords = {
 
 const categoryIds = {
   music: 6,
-  performingArts: 1,
-  sportsAndOutdoors: 7,
-  festivalsAndLifestyle: 190,
+  performingarts: 1,
+  sportsandoutdoors: 7,
+  festivalsandlifestyle: 190,
   exhibitions: 11,
-  workshopsAndEducation: 3,
-  allEvents: 246,
+  workshopsandeducation: 3,
+  allevents: 246,
 };
 
 function dateFormatted(date) {

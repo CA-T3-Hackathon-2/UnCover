@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // data
-import { categoryIds, dateFormatted } from "../utils/helpers";
+import { dateFormatted } from "../utils/helpers";
 // utils
 import capitalize from "../utils/capitalize";
 // styled components
@@ -13,12 +13,11 @@ import {
   Label,
 } from "./styled/FormComponents";
 import Header from "./styled/Header";
-import FormDiv from "./styled/form/FormDiv"
-import StyledForm from "./styled/form/StyledForm"
-import Submit from "./styled/Submit"
+import FormDiv from "./styled/form/FormDiv";
+import StyledForm from "./styled/form/StyledForm";
+import Submit from "./styled/Submit";
 
-const Form = ({ formData, dispatch }) => {
-  const categories = Object.keys(categoryIds);
+const Form = ({ formData, dispatch, categories }) => {
   const { category, dateFrom, dateTo, locationDistance, price } = formData;
 
   const handleSubmit = (event) => {
@@ -37,7 +36,8 @@ const Form = ({ formData, dispatch }) => {
           onChange={(e) =>
             dispatch({ type: "setCategory", data: e.target.value })
           }
-          value={category}>
+          value={category}
+        >
           {categories.map((category) => {
             return <option key={category}>{capitalize(category)}</option>;
           })}

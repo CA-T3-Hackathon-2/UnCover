@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
 import Nav from "./components/Nav";
@@ -16,9 +16,15 @@ futureDate = new Date(futureDate.setMonth(futureDate.getMonth() + 3));
 const App = () => {
   const initialState = {
     location: "Melbourne",
-    loading: false,
-    error: "",
-    events: [],
+    categories: [
+      "Music",
+      "Performing Arts",
+      "Sports and Outdoors",
+      "Festivals and Lifestyle",
+      "Exhibitions",
+      "Workshops and Education",
+      "All Events",
+    ],
     category: "All Events",
     dateFrom: dateFormatted(new Date()),
     dateTo: dateFormatted(futureDate),
@@ -27,8 +33,15 @@ const App = () => {
   };
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const { location, category, dateFrom, dateTo, locationDistance, price } =
-    store;
+  const {
+    location,
+    category,
+    dateFrom,
+    dateTo,
+    locationDistance,
+    price,
+    categories,
+  } = store;
   const formData = { category, dateFrom, dateTo, locationDistance, price };
 
   const setLocation = (location) => {
@@ -49,14 +62,28 @@ const App = () => {
             exact
             path="/find"
             render={(props) => (
-              <Find {...props} formData={formData} dispatch={dispatch} />
+              <Find
+                {...props}
+                formData={formData}
+                dispatch={dispatch}
+                categories={categories}
+              />
             )}
           />
           <Route
             exact
             path="/results"
-            render={(props) => <Results formData={formData} />}
+            render={(props) => (
+              <Results formData={formData} selectedlocation={location} />
+            )}
           />
+          <Route
+            render={() => (
+              <h2 style={{ marginTop: "5rem", fontSize: "4rem" }}>
+                404 Content Not Found
+              </h2>
+            )}
+          ></Route>
         </Switch>
       </Router>
     </>

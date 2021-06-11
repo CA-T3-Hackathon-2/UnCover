@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Logo from '../assets/logo.png'
+import Logo from "../assets/logo.png";
 
 const navStyle = {
   display: "flex",
@@ -27,19 +27,29 @@ const Nav = ({ selectedlocation, setLocation }) => {
     "Melbourne",
     "Sydney",
     "Brisbane",
-    "Canberra",
+    "Darwin",
     "Perth",
     "Adelaide",
-    "Hobart",
-  ];
+    "Newcastle",
+  ].sort((a, b) => (a[0] > b[0] ? 1 : -1));
 
   const handleLocationSelect = (e) => {
+    // Need a way to make sure location is being set correctly
+    if (window.location.href.match(/results/)) {
+      if (
+        window.confirm(
+          "Are you sure you wish to update location? This will remove current events."
+        )
+      ) {
+        window.location.href = "http://localhost:3000/find";
+      }
+    }
     setLocation(e.target.value);
   };
 
   return (
     <nav style={navStyle}>
-      <img src={Logo} alt="logo" width="300px"/>
+      <img src={Logo} alt="logo" width="200px" />
       <ul
         style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
       >
