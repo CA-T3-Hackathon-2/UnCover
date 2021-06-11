@@ -2,9 +2,24 @@ import React from "react";
 import EventHeading from "./styled/results/EventHeading";
 import EventLocation from "./styled/results/EventLocation";
 import EventDate from "./styled/results/EventDate";
+import Submit from "./styled/Submit";
+import { Link } from "react-router-dom";
 
 const ResultItem = ({ events }) => {
-  // console.log(events);
+  if (events.length === 0) {
+    return (
+      <div style={{ width: "60%" }}>
+        <p style={{ marginTop: "3rem" }}>
+          No results returned. Please broaden your search parameters and try
+          again!
+        </p>
+        <Link to="/find">
+          <Submit>Go Back</Submit>
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div>
       {events.map((targetEvent) => (
