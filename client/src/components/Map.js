@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import '../styles/map.css';
 
 const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
@@ -40,7 +41,7 @@ const Map = ({ events, lat, lng }) => {
             key={targetEvent.id}
             latitude={targetEvent.point.lat}
             longitude={targetEvent.point.lng}
-            style={{ width: "40px", height: "40px", overflow: "hidden" }}
+            className='marker'
           >
             <button
               className="markerBtn"
@@ -64,21 +65,25 @@ const Map = ({ events, lat, lng }) => {
             onClose={() => {
               setSelectedEvent(null);
             }}
+            className='popup'
           >
             <div
-              className={{
-                width: "10vw",
-                height: "40vh",
+              style={{
+                width: "25vw",
+                height: "23vh",
                 fontSize: "12px",
                 fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
                 color: "rgb(35, 37, 37)",
               }}
             >
               <h4>{selectedEvent.name}</h4>
+              <br></br>
               <h5>{selectedEvent.location_summary}</h5>
               <h6>{selectedEvent.address}</h6>
+              <br></br>
               <p>{selectedEvent.description}</p>
-              <h6>Valid until: {selectedEvent.datetime_end}</h6>
+              <h6><b>Valid until: {selectedEvent.datetime_end}</b></h6>
+              <br></br>
               <a
                 href={selectedEvent.url}
                 rel="noopener noreferrer"
