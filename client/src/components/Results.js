@@ -11,7 +11,6 @@ const resultState = {
   events: null,
   error: null,
   eventCount: 0,
-  currentPage: 1,
   pageCount: 0,
 };
 
@@ -32,10 +31,10 @@ const eventsReducer = (state, action) => {
         loading: false,
         error: action.data,
       };
-    case "setPage":
+    case "startRequest":
       return {
         ...state,
-        currentPage: action.data,
+        loading: true,
       };
     default:
       return state;
@@ -50,14 +49,17 @@ const Results = (props) => {
   const lng = locationToCoords[selectedlocation.toLowerCase()][1];
   const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
+  // State management
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
-  const { loading, events, error, eventCount, currentPage, pageCount } =
-    resultsStore;
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-  console.log(resultsStore);
+  const { loading, events, error, pageCount } = resultsStore;
+  const offset = currentPage * 10 - 10;
+  console.log(offset);
 
   const fetchEvents = async () => {
     try {
+      dispatch({ type: "startRequest" });
       const response = await fetch("/api", {
         method: "POST",
         headers: {
@@ -71,6 +73,7 @@ const Results = (props) => {
           dateTo,
           locationDistance,
           price,
+          offset,
         }),
       });
       const responseData = await response.json();
@@ -96,7 +99,7 @@ const Results = (props) => {
 
   React.useEffect(() => {
     fetchEvents();
-  }, []);
+  }, [currentPage]);
 
   // Conditional returrns
   if (loading) return <Loading />;
@@ -115,8 +118,9 @@ const Results = (props) => {
       <p style={{ marginTop: "2rem", paddingLeft: "5rem", fontSize: "1.8rem" }}>
         <Link to="/find" style={{ color: "inherit", textDecoration: "none" }}>
           Back
-        </Link>{" "}
-        > Results
+        </Link>
+        {"  >  "}
+        Results
       </p>
       <div style={{ display: "flex" }}>
         <div
@@ -140,7 +144,14 @@ const Results = (props) => {
         style={{ display: "flex", alignItems: "center", paddingLeft: "6rem" }}
       >
         {pageNumArray.map((page, i) => {
-          return <PageBox key={i} page={page} currentPage={currentPage} />;
+          return (
+            <PageBox
+              key={i}
+              page={page}
+              currentPage={currentPage}
+              handleClick={() => setCurrentPage(page)}
+            />
+          );
         })}
       </div>
     </section>

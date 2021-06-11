@@ -14,9 +14,12 @@ const activeStyle = {
   background: "orange",
 };
 
-const PageBox = ({ page, currentPage }) => {
+const PageBox = ({ page, currentPage, handleClick }) => {
   return (
-    <div style={page === currentPage ? activeStyle : boxStyle}>
+    <div
+      style={page === currentPage ? activeStyle : boxStyle}
+      onClick={handleClick}
+    >
       <span>{page}</span>
     </div>
   );
