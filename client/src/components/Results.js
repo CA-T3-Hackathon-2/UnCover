@@ -45,18 +45,22 @@ const Results = (props) => {
   const { category, dateFrom, dateTo, locationDistance, price } =
     props.formData;
   const { selectedlocation } = props;
-  const lat = locationToCoords[selectedlocation.toLowerCase()][0];
-  const lng = locationToCoords[selectedlocation.toLowerCase()][1];
   const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
   // State management
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
   const [currentPage, setCurrentPage] = React.useState(1);
+  const [lat, setCurrentLat] = React.useState(
+    locationToCoords[selectedlocation.toLowerCase()][0]
+  );
+  const [lng, setCurrentLng] = React.useState(
+    locationToCoords[selectedlocation.toLowerCase()][1]
+  );
 
   const { loading, events, error, pageCount } = resultsStore;
   const offset = currentPage * 10 - 10;
-  console.log(offset);
 
+  // API Call to server
   const fetchEvents = async () => {
     try {
       dispatch({ type: "startRequest" });
@@ -101,7 +105,7 @@ const Results = (props) => {
     fetchEvents();
   }, [currentPage]);
 
-  // Conditional returrns
+  // Move map to marker
   if (loading) return <Loading />;
 
   if (error)
@@ -112,6 +116,11 @@ const Results = (props) => {
   for (let i = 1; i <= pageCount; i++) {
     pageNumArray.push(i);
   }
+
+  const handleUpdateCoords = (targetEvent) => {
+    setCurrentLat(targetEvent.point.lat);
+    setCurrentLng(targetEvent.point.lng);
+  };
 
   return (
     <section style={{ padding: " 1rem 3rem", height: "75vh" }}>
@@ -134,10 +143,10 @@ const Results = (props) => {
             overflowY: "scroll",
           }}
         >
-          <ResultItem events={events} />
+          <ResultItem events={events} handleUpdateCoords={handleUpdateCoords} />
         </div>
         <div style={{ flex: "0.6", margin: "10px", overflow: "hidden" }}>
-          <Map events={events} lat={lat} lng={lng} />
+          <Map events={events} lat={lat} lng={lng} key={lat} />
         </div>
       </div>
       <div

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import '../styles/map.css';
+import "../styles/map.css";
 
 const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: lng,
-    zoom: 12,
+    zoom: 13,
   });
+
+  console.log(lat, lng);
 
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -33,7 +35,7 @@ const Map = ({ events, lat, lng }) => {
         onViewportChange={(newView) => {
           setViewport(newView);
         }}
-        mapStyle={"mapbox://styles/rhys-morris/ckpqt4iel13v317q2faz5scmp"}
+        mapStyle={"mapbox://styles/darkoau/ckpqa00xl0l9117myclc4ss8k"}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       >
         {events.map((targetEvent) => (
@@ -41,7 +43,7 @@ const Map = ({ events, lat, lng }) => {
             key={targetEvent.id}
             latitude={targetEvent.point.lat}
             longitude={targetEvent.point.lng}
-            className='marker'
+            className="marker"
           >
             <button
               className="markerBtn"
@@ -65,24 +67,20 @@ const Map = ({ events, lat, lng }) => {
             onClose={() => {
               setSelectedEvent(null);
             }}
-            className='popup'
+            className="popup"
           >
             <div
-              style={{
-                width: "25vw",
-                height: "23vh",
-                fontSize: "12px",
-                fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-                color: "rgb(35, 37, 37)",
-              }}
+              className='popup-div'
             >
-              <h4>{selectedEvent.name}</h4>
+              <h3>{selectedEvent.name}</h3>
               <br></br>
               <h5>{selectedEvent.location_summary}</h5>
               <h6>{selectedEvent.address}</h6>
               <br></br>
               <p>{selectedEvent.description}</p>
-              <h6><b>Valid until: {selectedEvent.datetime_end}</b></h6>
+              <h6>
+                <b>Valid until: {selectedEvent.datetime_end}</b>
+              </h6>
               <br></br>
               <a
                 href={selectedEvent.url}

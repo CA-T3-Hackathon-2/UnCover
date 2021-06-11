@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Find from "./components/Find";
 import Results from "./components/Results";
+import About from './components/About';
 //utils
 import reducer from "./utils/reducer";
 import { dateFormatted } from "./utils/helpers";
@@ -58,7 +59,7 @@ const App = () => {
         <Nav selectedlocation={location} hamburgerOpen={hamburgerOpen} dispatch={dispatch} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
-          {/* <Route exact path="/about" render={(props) => <About />} /> */}
+          <Route exact path="/about" render={props => <About /> }  />
           <Route
             exact
             path="/find"
