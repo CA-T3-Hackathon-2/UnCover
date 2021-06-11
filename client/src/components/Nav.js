@@ -41,6 +41,7 @@ const Nav = ({ selectedlocation, hamburgerOpen, dispatch }) => {
         window.location.href = "http://localhost:3000/find";
       }
     }
+    sessionStorage.setItem("location", e.target.value);
     dispatch( {type: "setLocation", data: e.target.value} );
   };
   
