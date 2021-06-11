@@ -18,10 +18,10 @@ const About = () => {
           <p>This is an event finder app designed and built during a 48-hour hackathon at Coder Academy, Melbourne and Sydney.</p>
           <p>Using the app is easy.</p>
           <ol>
-            <li>Pick your city form the top-right corner</li>
-            <li>Click 'Find Events' and it will take you to a form</li>
+            <li>Pick your city from the top-right corner</li>
+            <li>Click 'Find Events' to go to the form</li>
             <li>Select additional filters for Category, Date, Distance and Price </li>
-            <li>Click 'Submit' and let UnCover take you on a journey!</li>
+            <li>Click 'Submit' and <span style={{fontWeight: "bold"}}>let <span style={{ color: "#3b9bd1" }}>UnCover</span> take you on a journey!</span></li>
           </ol>
           <AboutImagePosition src={AboutImage} alt="person-sitting-with-laptop" />
         </AboutColumn>
@@ -32,28 +32,28 @@ const About = () => {
           <TeamHandAndBox>
             <HandStyles src={HandPoint} alt="hand-point" />
             <BoxStyles>
-              <h1>Ana</h1>
+              <h1 style={{color: "#3b9bd1"}}>Ana</h1>
               <span>Hangs out with cats and sings and plays keys with Renelophus.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandThumbUp} alt="hand-thumb-up" />
             <BoxStyles>
-              <h1>Irah</h1>
+              <h1 style={{color: "#3b9bd1"}}>Irah</h1>
               <span>Loves her coffee and dabbles with graphic design and digital illustration.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandCool} alt="hand-cool" />
             <BoxStyles>
-              <h1>Darko</h1>
+              <h1 style={{color: "#3b9bd1"}}>Darko</h1>
               <span>Enjoys Roku gin and loves creating mischief.</span>
             </BoxStyles>
           </TeamHandAndBox>
           <TeamHandAndBox>
             <HandStyles src={HandRockstar} alt="hand-rockstar" />
             <BoxStyles>
-              <h1>Rhys</h1>
+              <h1 style={{color: "#3b9bd1"}}>Rhys</h1>
               <span>Restores mid-century furnitures and is a small animal veterinarian.</span>
             </BoxStyles>
           </TeamHandAndBox>
