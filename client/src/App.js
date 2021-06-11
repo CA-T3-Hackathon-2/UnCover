@@ -56,7 +56,7 @@ const App = () => {
         <Nav selectedlocation={location} setLocation={setLocation} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
-          {/* <Route exact path="/about" render={props => <About /> }  /> */}
+          {/* <Route exact path="/about" render={(props) => <About />} /> */}
           <Route
             exact
             path="/find"
@@ -76,6 +76,13 @@ const App = () => {
               <Results formData={formData} selectedlocation={location} />
             )}
           />
+          <Route
+            render={() => (
+              <h2 style={{ marginTop: "5rem", fontSize: "4rem" }}>
+                404 Content Not Found
+              </h2>
+            )}
+          ></Route>
         </Switch>
       </Router>
     </>
