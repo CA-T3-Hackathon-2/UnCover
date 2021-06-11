@@ -33,9 +33,10 @@ const Form = ({ formData, dispatch, categories }) => {
       <StyledForm onChange={handleSubmit}>
         <Label htmlFor="category">Event Category</Label>
         <Select
-          onChange={(e) =>
-            dispatch({ type: "setCategory", data: e.target.value })
-          }
+          onChange={(e) => {
+            sessionStorage.setItem("category", e.target.value);
+            dispatch({ type: "setCategory", data: e.target.value });
+          }}
           value={category}
         >
           {categories.map((category) => {
@@ -51,9 +52,10 @@ const Form = ({ formData, dispatch, categories }) => {
               id="datemin"
               name="datemin"
               value={dateFrom}
-              onChange={(e) =>
-                dispatch({ type: "setDateFrom", data: e.target.value })
-              }
+              onChange={(e) => {
+                sessionStorage.setItem("dateFrom", e.target.value);
+                dispatch({ type: "setDateFrom", data: e.target.value });
+              }}
               min={dateFormatted(new Date())}
             />
           </FormFieldColumn>
@@ -64,9 +66,10 @@ const Form = ({ formData, dispatch, categories }) => {
               id="datemax"
               name="datemax"
               value={dateTo}
-              onChange={(e) =>
-                dispatch({ type: "setDateTo", data: e.target.value })
-              }
+              onChange={(e) => {
+                sessionStorage.setItem("dateTo", e.target.value);
+                dispatch({ type: "setDateTo", data: e.target.value });
+              }}
               min={dateFormatted(new Date())}
             />
           </FormFieldColumn>
@@ -77,9 +80,10 @@ const Form = ({ formData, dispatch, categories }) => {
             <Label htmlFor="locationDistance">Location Distance (km)</Label>
             <Input
               type="number"
-              onChange={(e) =>
-                dispatch({ type: "setLocationDistance", data: e.target.value })
-              }
+              onChange={(e) => {
+                sessionStorage.setItem("locationDistance", e.target.value);
+                dispatch({ type: "setLocationDistance", data: e.target.value });
+              }}
               value={locationDistance}
               min={1}
             />
@@ -88,9 +92,10 @@ const Form = ({ formData, dispatch, categories }) => {
             <Label htmlFor="price">Max price ($)</Label>
             <Input
               type="number"
-              onChange={(e) =>
-                dispatch({ type: "setPrice", data: e.target.value })
-              }
+              onChange={(e) => {
+                sessionStorage.setItem("price", e.target.value);
+                dispatch({ type: "setPrice", data: e.target.value });
+              }}
               value={price}
               min={1}
             />

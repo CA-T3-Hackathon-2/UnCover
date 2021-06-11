@@ -44,6 +44,7 @@ const Nav = ({ selectedlocation, setLocation }) => {
         window.location.href = "http://localhost:3000/find";
       }
     }
+    sessionStorage.setItem("location", e.target.value);
     setLocation(e.target.value);
   };
 

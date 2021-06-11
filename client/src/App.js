@@ -14,7 +14,7 @@ futureDate = new Date(futureDate.setMonth(futureDate.getMonth() + 3));
 
 const App = () => {
   const initialState = {
-    location: "Melbourne",
+    location: sessionStorage.getItem("location") || "Melbourne",
     categories: [
       "Music",
       "Performing Arts",
@@ -24,11 +24,11 @@ const App = () => {
       "Workshops and Education",
       "All Events",
     ],
-    category: "All Events",
-    dateFrom: dateFormatted(new Date()),
-    dateTo: dateFormatted(futureDate),
-    locationDistance: 10,
-    price: 50,
+    category: sessionStorage.getItem("category") || "All Events",
+    dateFrom: sessionStorage.getItem("dateFrom") || dateFormatted(new Date()),
+    dateTo: sessionStorage.getItem("dateTo") || dateFormatted(futureDate),
+    locationDistance: sessionStorage.getItem("locationDistance") || 10,
+    price: sessionStorage.getItem("price") || 50,
   };
 
   const [store, dispatch] = useReducer(reducer, initialState);
