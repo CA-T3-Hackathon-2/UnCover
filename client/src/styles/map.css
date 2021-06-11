@@ -6,7 +6,8 @@
 
 .popup {
     opacity: 0.95;
-    box-shadow: "1px 2px 3px 0 rgba(0,0,0,0.2"
+    box-shadow: "1px 2px 3px 0 rgba(0,0,0,0.2";
+    z-index: 9999;
 }
 
 .markerBtn {
@@ -28,5 +29,6 @@ button:focus {outline:0;}
     width: 25vw;
     height: 28vh;
     font-size: 14px;
+    z-index: 1000;
     color: rgb(35, 37, 37)
   }

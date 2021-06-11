@@ -64,14 +64,10 @@ const Map = ({ events, lat, lng }) => {
           <Popup
             latitude={selectedEvent.point.lat}
             longitude={selectedEvent.point.lng}
-            onClose={() => {
-              setSelectedEvent(null);
-            }}
+            onClose={() => (setTimeout(() => setSelectedEvent(null)), 300)}
             className="popup"
           >
-            <div
-              className='popup-div'
-            >
+            <div className="popup-div">
               <h3>{selectedEvent.name}</h3>
               <br></br>
               <h5>{selectedEvent.location_summary}</h5>
