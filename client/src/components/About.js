@@ -11,6 +11,11 @@ const handStyles = {
   height: "auto"
 }
 
+const aboutImageStyles = {
+  width: "50%",
+  height: "auto"
+}
+
 const boxStyles = {
   border: "solid black 2px",
   padding: "10px",
@@ -30,7 +35,7 @@ const About = () => {
             <li>Select additional filters for Category, Date, Distance and Price </li>
             <li>Click 'Submit' and let UnCover take you on a journey!</li>
           </ol>
-          <img src={AboutImage} alt="person-sitting-with-laptop" />
+          <img style={aboutImageStyles} src={AboutImage} alt="person-sitting-with-laptop" />
         </div>
         <div>
           <Header>Meet the <span style={{ color: "#3b9bd1" }}>Team</span></Header>
