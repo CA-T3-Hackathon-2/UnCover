@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import Submit from "./styled/Submit";
 import "../styles/map.css";
 
 const Map = ({ events, lat, lng }) => {
@@ -69,21 +70,26 @@ const Map = ({ events, lat, lng }) => {
           >
             <div className="popup-div">
               <h3>{selectedEvent.name}</h3>
-              <br></br>
               <h5>{selectedEvent.location_summary}</h5>
               <h6>{selectedEvent.address}</h6>
-              <br></br>
-              <p>{selectedEvent.description}</p>
+              {selectedEvent.images.images[0]["original_url"] && (
+                <img
+                  src={selectedEvent.images.images[0]["original_url"]}
+                  style={{ width: "100%", height: "auto", margin: "1rem 0" }}
+                />
+              )}
+              <p style={{ fontSize: "1.4rem" }}>{selectedEvent.description}</p>
               <h6>
                 <b>Valid until: {selectedEvent.datetime_end}</b>
               </h6>
-              <br></br>
               <a
                 href={selectedEvent.url}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                Go to event
+                <Submit style={{ marginTop: ".5rem", padding: ".5rem" }}>
+                  GO TO EVENT
+                </Submit>
               </a>
             </div>
           </Popup>
