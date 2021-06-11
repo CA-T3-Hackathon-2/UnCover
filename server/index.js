@@ -22,7 +22,7 @@ router.post("/api", (req, res) => {
   console.log(req.body);
 
   fetch(
-    `https://api.eventfinda.com.au/v2/events.json?rows=20&point=${lat},${lng}&category=${categoryID}&radius=${locationDistance}&price_max=${price}&start_date=${dateFrom}&end_date=${dateTo}`,
+    `https://api.eventfinda.com.au/v2/events.json?rows=10&point=${lat},${lng}&category=${categoryID}&radius=${locationDistance}&price_max=${price}&start_date=${dateFrom}&end_date=${dateTo}`,
     {
       headers: {
         Authorization: "Basic " + btoa(API_USERNAME + ":" + API_PASSWORD),

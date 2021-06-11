@@ -9,6 +9,9 @@ const resultState = {
   loading: true,
   events: null,
   error: null,
+  eventCount: 0,
+  page: 1,
+  pageCount: 0,
 };
 
 const eventsReducer = (state, action) => {
@@ -18,13 +21,20 @@ const eventsReducer = (state, action) => {
         ...state,
         loading: false,
         error: null,
-        events: action.data,
+        events: action.data.events,
+        eventCount: action.data.count,
+        pageCount: action.data.pageCount,
       };
     case "failure":
       return {
         ...state,
         loading: false,
         error: action.data,
+      };
+    case "setPage":
+      return {
+        ...state,
+        page: action.data,
       };
     default:
       return state;
@@ -40,7 +50,9 @@ const Results = (props) => {
   const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
-  const { loading, events, error } = resultsStore;
+  const { loading, events, error, eventCount, page } = resultsStore;
+
+  console.log(resultsStore);
 
   const fetchEvents = async () => {
     try {
@@ -61,7 +73,18 @@ const Results = (props) => {
       });
       const responseData = await response.json();
       console.log(responseData);
-      dispatch({ type: "success", data: responseData.events });
+
+      let pageCount = Math.floor(responseData["@attributes"].count / 10);
+      pageCount += pageCount % 10 !== 0 ? 1 : 0;
+
+      dispatch({
+        type: "success",
+        data: {
+          events: responseData.events,
+          count: responseData["@attributes"].count,
+          pageCount,
+        },
+      });
     } catch (error) {
       dispatch({ type: "failure", data: "Error fetching data from API" });
       console.error(error);
@@ -75,7 +98,8 @@ const Results = (props) => {
   // Conditional returrns
   if (loading) return <Loading />;
 
-  if (error) return <p>{error}</p>;
+  if (error)
+    return <p style={{ marginTop: "10rem", fontSize: "4rem" }}>{error}</p>;
 
   return (
     <section style={{ padding: " 1rem 3rem" }}>
@@ -98,6 +122,7 @@ const Results = (props) => {
           }}
         >
           <ResultItem events={events} />
+          <div></div>
         </div>
         <div style={{ flex: "0.6", margin: "10px", overflow: "hidden" }}>
           <Map events={events} lat={lat} lng={lng} />
