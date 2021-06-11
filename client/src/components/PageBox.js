@@ -11,7 +11,8 @@ const boxStyle = {
 
 const activeStyle = {
   ...boxStyle,
-  background: "orange",
+  background: "#f9efbe",
+  color: "#444",
 };
 
 const PageBox = ({ page, currentPage, handleClick }) => {
