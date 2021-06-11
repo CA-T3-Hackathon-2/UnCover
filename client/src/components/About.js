@@ -6,6 +6,9 @@ import HandThumbUp from '../assets/hand-thumb-up.png'
 import HandCool from '../assets/hand-cool.png'
 import HandRockstar from '../assets/hand-rockstar.png'
 
+//styled components
+import {AboutMainBox, AboutColumn} from './styled/AboutStyles'
+
 const handStyles = {
   width: "10%",
   height: "auto"
@@ -25,8 +28,9 @@ const boxStyles = {
 const About = () => {
   return(
     <section>
-      <div>
-        <div>
+      <AboutMainBox>
+        <AboutColumn>
+          <Header style={{ marginBottom: "3rem" }}  >About <span style={{ color: "#3b9bd1" }}>UnCover</span></Header>
           <p>This is an event finder app designed and built during a 48-hour hackathon at Coder Academy, Melbourne and Sydney.</p>
           <p>Using the app is easy.</p>
           <ol>
@@ -36,9 +40,9 @@ const About = () => {
             <li>Click 'Submit' and let UnCover take you on a journey!</li>
           </ol>
           <img style={aboutImageStyles} src={AboutImage} alt="person-sitting-with-laptop" />
-        </div>
-        <div>
-          <Header>Meet the <span style={{ color: "#3b9bd1" }}>Team</span></Header>
+        </AboutColumn>
+        <AboutColumn>
+          <Header style={{ marginBottom: "3rem" }}>Meet the <span style={{ color: "#3b9bd1" }}>Team</span></Header>
           <p>We are a team of aspiring developers at Coder Academy</p>
 
           <div>
@@ -70,8 +74,8 @@ const About = () => {
             </div>
           </div>
 
-        </div>
-      </div>
+        </AboutColumn>
+      </AboutMainBox>
     </section>
   )
 }
