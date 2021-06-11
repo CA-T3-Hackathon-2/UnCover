@@ -2,6 +2,7 @@ import React from "react";
 import Map from "./Map";
 import ResultItem from "./ResultItem";
 import Loading from "./Loading";
+import PageBox from "./PageBox";
 import { locationToCoords, categoryIds } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const resultState = {
   events: null,
   error: null,
   eventCount: 0,
-  page: 1,
+  currentPage: 1,
   pageCount: 0,
 };
 
@@ -34,7 +35,7 @@ const eventsReducer = (state, action) => {
     case "setPage":
       return {
         ...state,
-        page: action.data,
+        currentPage: action.data,
       };
     default:
       return state;
@@ -50,7 +51,8 @@ const Results = (props) => {
   const categoryID = categoryIds[category.split(" ").join("").toLowerCase()];
 
   const [resultsStore, dispatch] = React.useReducer(eventsReducer, resultState);
-  const { loading, events, error, eventCount, page } = resultsStore;
+  const { loading, events, error, eventCount, currentPage, pageCount } =
+    resultsStore;
 
   console.log(resultsStore);
 
@@ -74,8 +76,9 @@ const Results = (props) => {
       const responseData = await response.json();
       console.log(responseData);
 
+      // Work out page counts for pagination
       let pageCount = Math.floor(responseData["@attributes"].count / 10);
-      pageCount += pageCount % 10 !== 0 ? 1 : 0;
+      if (responseData["@attributes"].count % 10 !== 0) pageCount += 1;
 
       dispatch({
         type: "success",
@@ -101,9 +104,15 @@ const Results = (props) => {
   if (error)
     return <p style={{ marginTop: "10rem", fontSize: "4rem" }}>{error}</p>;
 
+  // Set up pageNumArray to map over
+  const pageNumArray = [];
+  for (let i = 1; i <= pageCount; i++) {
+    pageNumArray.push(i);
+  }
+
   return (
-    <section style={{ padding: " 1rem 3rem" }}>
-      <p style={{ marginTop: "3rem", paddingLeft: "5rem", fontSize: "1.8rem" }}>
+    <section style={{ padding: " 1rem 3rem", height: "75vh" }}>
+      <p style={{ marginTop: "2rem", paddingLeft: "5rem", fontSize: "1.8rem" }}>
         <Link to="/find" style={{ color: "inherit", textDecoration: "none" }}>
           Back
         </Link>{" "}
@@ -122,11 +131,17 @@ const Results = (props) => {
           }}
         >
           <ResultItem events={events} />
-          <div></div>
         </div>
         <div style={{ flex: "0.6", margin: "10px", overflow: "hidden" }}>
           <Map events={events} lat={lat} lng={lng} />
         </div>
+      </div>
+      <div
+        style={{ display: "flex", alignItems: "center", paddingLeft: "6rem" }}
+      >
+        {pageNumArray.map((page, i) => {
+          return <PageBox key={i} page={page} currentPage={currentPage} />;
+        })}
       </div>
     </section>
   );
