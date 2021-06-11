@@ -1,0 +1,82 @@
+.navStyle {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5rem 10rem 0 10rem;
+  @media screen and (min-width: 1025px) { // v big screen
+  }
+  @media screen and (max-width: 768px) { // tablet
+    padding: 5rem 3rem 0 5rem;
+  }
+  @media screen and (max-width: 500px) { // phone
+    padding: 2rem 1rem 0 1rem;
+  }
+
+  .navSelectStyle {
+    color: #3b9bd1; 
+    border: none; 
+    background: "#fff";
+    @media screen and (max-width: 768px) { // tablet
+      font-size: 1.2rem;
+      
+    }
+  }
+
+  .navLabelStyle{
+    font-size: 2rem;
+    @media screen and (max-width: 768px) { // tablet
+      margin: 0;
+      
+    }
+  }
+
+  .navImg{
+    @media screen and (max-width: 768px) { // tablet
+      position: relative;
+      top: -1.1rem;
+      
+    }
+  }
+}
+
+/* hamburger menu */
+
+.navStyle button {
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  overflow-y: scroll;
+  list-style: none;
+  position: fixed;
+  top: 0;
+  background: rgb(35, 147, 201);
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  max-width: 60%;
+  z-index: 9;
+  transition: 0.3s ease-in-out;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+  visibility: visible;
+  transition: 0.3s ease-in-out;
+  flex-direction: column;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
+}

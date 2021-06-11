@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import Logo from "../assets/logo.png";
-import '../index.css'
+import '../styles/index.scss'
 // styled components
-import {NavStyle, NavSelectStyle, NavLabelStyle, NavImg} from "./styled/nav/NavStyle";
+import {NavSelectStyle, NavLabelStyle, NavImg} from "./styled/nav/NavStyle";
 
 const linkStyle = {
+  cursor: "pointer",
   margin: " 0 2rem",
   color: "inherit",
   fontSize: "2rem",
@@ -54,11 +55,9 @@ const Nav = ({ selectedlocation, hamburgerOpen, dispatch }) => {
   }
 
   return (
-    <NavStyle>
+    <div className="navStyle">
       <NavLink exact to="/"><NavImg src={Logo} alt="logo" width="200px" /></NavLink>
-      <ul
-        style={{ display: "flex", flexDirection: "row", listStyleType: "none" }}
-        className={`menuNav ${hamburgerOpen? " showMenu":" "  }`}
+      <ul className={`menuNav ${hamburgerOpen? " showMenu":" "  }`}
       >
         <li>
           <NavLink style={linkStyle} activeStyle={linkActiveStyle} exact to="/">
@@ -100,7 +99,7 @@ const Nav = ({ selectedlocation, hamburgerOpen, dispatch }) => {
       {/* hamburger menu */}
       <button style={{border: "none", background: "transparent", fontSize: "2.5rem"} } onClick={handleToggle}>
         {hamburgerOpen ? (<MdClose />) : <FiMenu />}</button>
-    </NavStyle>
+    </div>
   );
 };
 

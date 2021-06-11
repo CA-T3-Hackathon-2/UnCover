@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "./styles/index.scss";
 
 //Utils
 import ReactDOM from "react-dom";
