@@ -7,18 +7,7 @@ import HandCool from '../assets/hand-cool.png'
 import HandRockstar from '../assets/hand-rockstar.png'
 
 //styled components
-import {AboutMainBox, AboutColumn, AboutImagePosition} from './styled/AboutStyles'
-
-const handStyles = {
-  width: "10%",
-  height: "auto"
-}
-
-const boxStyles = {
-  border: "solid black 2px",
-  padding: "10px",
-  borderRadius: "5px"
-}
+import {AboutMainBox, AboutColumn, AboutImagePosition, TeamHandAndBox, BoxStyles, HandStyles} from './styled/AboutStyles'
 
 const About = () => {
   return(
@@ -38,36 +27,36 @@ const About = () => {
         </AboutColumn>
         <AboutColumn>
           <Header style={{ marginBottom: "3rem" }}>Meet the <span style={{ color: "#3b9bd1" }}>Team</span></Header>
-          <p>We are a team of aspiring developers at Coder Academy</p>
+          <p style={{ textAlign: "center" }}>We are a team of aspiring developers at Coder Academy</p>
 
-          <div>
-            <img style={handStyles} src={HandPoint} alt="hand-point" />
-            <div style={boxStyles}>
+          <TeamHandAndBox>
+            <HandStyles src={HandPoint} alt="hand-point" />
+            <BoxStyles>
               <h1>Ana</h1>
               <span>Hangs out with cats and sings and plays keys with Renelophus.</span>
-            </div>
-          </div>
-          <div>
-            <img style={handStyles} src={HandThumbUp} alt="hand-thumb-up" />
-            <div style={boxStyles}>
+            </BoxStyles>
+          </TeamHandAndBox>
+          <TeamHandAndBox>
+            <HandStyles src={HandThumbUp} alt="hand-thumb-up" />
+            <BoxStyles>
               <h1>Irah</h1>
               <span>Loves her coffee and dabbles with graphic design and digital illustration.</span>
-            </div>
-          </div>
-          <div>
-            <img style={handStyles} src={HandCool} alt="hand-cool" />
-            <div style={boxStyles}>
+            </BoxStyles>
+          </TeamHandAndBox>
+          <TeamHandAndBox>
+            <HandStyles src={HandCool} alt="hand-cool" />
+            <BoxStyles>
               <h1>Darko</h1>
               <span>Enjoys Roku gin and loves creating mischief.</span>
-            </div>
-          </div>
-          <div>
-            <img style={handStyles} src={HandRockstar} alt="hand-rockstar" />
-            <div style={boxStyles}>
+            </BoxStyles>
+          </TeamHandAndBox>
+          <TeamHandAndBox>
+            <HandStyles src={HandRockstar} alt="hand-rockstar" />
+            <BoxStyles>
               <h1>Rhys</h1>
               <span>Restores mid-century furnitures and is a small animal veterinarian.</span>
-            </div>
-          </div>
+            </BoxStyles>
+          </TeamHandAndBox>
 
         </AboutColumn>
       </AboutMainBox>
