@@ -35,7 +35,7 @@ const Map = ({ events, lat, lng }) => {
         onViewportChange={(newView) => {
           setViewport(newView);
         }}
-        mapStyle={"mapbox://styles/darkoau/ckpqa00xl0l9117myclc4ss8k"}
+        mapStyle={"mapbox://styles/rhys-morris/ckpqt4iel13v317q2faz5scmp"}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       >
         {events.map((targetEvent) => (
@@ -64,14 +64,10 @@ const Map = ({ events, lat, lng }) => {
           <Popup
             latitude={selectedEvent.point.lat}
             longitude={selectedEvent.point.lng}
-            onClose={() => {
-              setSelectedEvent(null);
-            }}
+            onClose={() => (setTimeout(() => setSelectedEvent(null)), 300)}
             className="popup"
           >
-            <div
-              className='popup-div'
-            >
+            <div className="popup-div">
               <h3>{selectedEvent.name}</h3>
               <br></br>
               <h5>{selectedEvent.location_summary}</h5>
