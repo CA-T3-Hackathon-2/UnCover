@@ -138,14 +138,14 @@ const Results = (props) => {
             paddingLeft: "5rem",
             paddingRight: "2rem",
             fontSize: "2rem",
-            flex: "0.4",
+            flex: "0.35",
             height: "80vh",
             overflowY: "scroll",
           }}
         >
           <ResultItem events={events} handleUpdateCoords={handleUpdateCoords} />
         </div>
-        <div style={{ flex: "0.6", margin: "10px", overflow: "hidden" }}>
+        <div style={{ flex: "0.65", margin: "10px", overflow: "hidden" }}>
           <Map events={events} lat={lat} lng={lng} key={lat} />
         </div>
       </div>
