@@ -6,7 +6,7 @@ const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
     latitude: lat,
     longitude: lng,
-    zoom: 12,
+    zoom: 13,
   });
 
   console.log(lat, lng);
