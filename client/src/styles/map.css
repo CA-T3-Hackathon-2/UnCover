@@ -27,8 +27,7 @@ button:focus {outline:0;}
 
 .popup-div {
     width: 25vw;
-    height: 28vh;
-    font-size: 14px;
-    z-index: 1000;
+    padding: 1.8rem;
+    font-size: 1.6rem;
     color: rgb(35, 37, 37)
   }
