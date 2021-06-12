@@ -3,6 +3,7 @@ const router = express.Router();
 const btoa = require("btoa");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
+const path = require("path");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
