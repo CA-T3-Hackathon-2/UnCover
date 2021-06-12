@@ -4,19 +4,23 @@ const btoa = require("btoa");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const PORT = process.env.PORT || 3001;
-const API_USERNAME = "uncover2";
-const API_PASSWORD = "6snxqhzyt4ry";
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+
 // Request data from API
 router.post("/api", (req, res) => {
   console.log("here");
-  // Destructure query params from posted body
   const {
     categoryID,
     lat,
@@ -27,13 +31,14 @@ router.post("/api", (req, res) => {
     price,
     offset,
   } = req.body;
-  console.log(req.body);
 
   fetch(
     `https://api.eventfinda.com.au/v2/events.json?rows=20&offset=${offset}&point=${lat},${lng}&category=${categoryID}&radius=${locationDistance}&price_max=${price}&start_date=${dateFrom}&end_date=${dateTo}`,
     {
       headers: {
-        Authorization: "Basic " + btoa(API_USERNAME + ":" + API_PASSWORD),
+        Authorization:
+          "Basic " +
+          btoa(process.env.API_USERNAME + ":" + process.env.API_PASSWORD),
       },
     }
   )
@@ -44,6 +49,11 @@ router.post("/api", (req, res) => {
 // Test  working
 app.get("/test", (req, res) => {
   res.json({ message: "Hello there!" });
+});
+
+// All other GET requests not handled before will return our React app
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 app.use("/", router);
