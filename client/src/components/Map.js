@@ -36,7 +36,7 @@ const Map = ({ events, lat, lng }) => {
         onViewportChange={(newView) => {
           setViewport(newView);
         }}
-        mapStyle="mapbox://styles/rhys-morris/ckpp8s0fn0oti17pc3iwle9ak"
+        mapStyle="mapbox://styles/rhys-morris/ckpthwhyv13lr17nxvy8ruq1o"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       >
         {events.map((targetEvent) => (
