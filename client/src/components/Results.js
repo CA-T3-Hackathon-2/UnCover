@@ -66,22 +66,25 @@ const Results = (props) => {
   const fetchEvents = async () => {
     try {
       dispatch({ type: "startRequest" });
-      const response = await fetch("/api", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          categoryID,
-          lat,
-          lng,
-          dateFrom,
-          dateTo,
-          locationDistance,
-          price,
-          offset,
-        }),
-      });
+      const response = await fetch(
+        "https://uncover-eventfinder.herokuapp.com/api",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categoryID,
+            lat,
+            lng,
+            dateFrom,
+            dateTo,
+            locationDistance,
+            price,
+            offset,
+          }),
+        }
+      );
       const responseData = await response.json();
       console.log(responseData);
 
@@ -152,10 +155,14 @@ const Results = (props) => {
         </div>
       </div>
       <div
-        style={{ display: "flex", alignItems: "center", justifyContent:"space-between", paddingLeft: "6rem"}}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingLeft: "6rem",
+        }}
       >
-        <div
-          style={{ display: "flex", flexDirection:"row" }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           {pageNumArray.map((page, i) => {
             return (
               <PageBox
@@ -167,7 +174,12 @@ const Results = (props) => {
             );
           })}
         </div>
-        <img style={{justifySelf: "flex-end"}} src={Attribution} alt="powered by Eventfinda" width="200px" />
+        <img
+          style={{ justifySelf: "flex-end" }}
+          src={Attribution}
+          alt="powered by Eventfinda"
+          width="200px"
+        />
       </div>
     </section>
   );
