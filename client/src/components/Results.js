@@ -63,51 +63,48 @@ const Results = (props) => {
   const offset = currentPage * 20 - 20;
 
   // API Call to server
-  const fetchEvents = async () => {
-    try {
-      dispatch({ type: "startRequest" });
-      const response = await fetch(
-        "https://uncover-eventfinder.herokuapp.com/api",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            categoryID,
-            lat,
-            lng,
-            dateFrom,
-            dateTo,
-            locationDistance,
-            price,
-            offset,
-          }),
-        }
-      );
-      const responseData = await response.json();
-      console.log(responseData);
-
-      // Work out page counts for pagination
-      let pageCount = Math.floor(responseData["@attributes"].count / 20);
-      if (responseData["@attributes"].count % 20 !== 0) pageCount += 1;
-
-      dispatch({
-        type: "success",
-        data: {
-          events: responseData.events,
-          count: responseData["@attributes"].count,
-          pageCount,
-        },
-      });
-    } catch (error) {
-      dispatch({ type: "failure", data: "Error fetching data from API" });
-      console.error(error);
-    }
-  };
-
   React.useEffect(() => {
-    fetchEvents();
+    (async () => {
+      try {
+        dispatch({ type: "startRequest" });
+        const response = await fetch(
+          "https://uncover-eventfinder.herokuapp.com/api",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              categoryID,
+              lat,
+              lng,
+              dateFrom,
+              dateTo,
+              locationDistance,
+              price,
+              offset,
+            }),
+          }
+        );
+        const responseData = await response.json();
+
+        // Work out page counts for pagination
+        let pageCount = Math.floor(responseData["@attributes"].count / 20);
+        if (responseData["@attributes"].count % 20 !== 0) pageCount += 1;
+
+        dispatch({
+          type: "success",
+          data: {
+            events: responseData.events,
+            count: responseData["@attributes"].count,
+            pageCount,
+          },
+        });
+      } catch (error) {
+        dispatch({ type: "failure", data: "Error fetching data from API" });
+        console.error(error);
+      }
+    })();
   }, [currentPage]);
 
   // Move map to marker

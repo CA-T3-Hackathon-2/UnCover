@@ -76,6 +76,7 @@ const Map = ({ events, lat, lng }) => {
                 <img
                   src={selectedEvent.images.images[0]["original_url"]}
                   style={{ width: "100%", height: "auto", margin: "1rem 0" }}
+                  alt="event-image"
                 />
               )}
               <p style={{ fontSize: "1.4rem" }}>{selectedEvent.description}</p>
