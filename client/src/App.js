@@ -1,6 +1,3 @@
-<<<<<<< HEAD:src/App.js
-import React from "react";
-=======
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // components
@@ -8,14 +5,13 @@ import Nav from "./components/Nav";
 import Main from "./components/Main";
 import Find from "./components/Find";
 import Results from "./components/Results";
-import About from './components/About';
+import About from "./components/About";
 //utils
 import reducer from "./utils/reducer";
 import { dateFormatted } from "./utils/helpers";
 
 let futureDate = new Date();
 futureDate = new Date(futureDate.setMonth(futureDate.getMonth() + 3));
->>>>>>> dev:client/src/App.js
 
 const App = () => {
   const initialState = {
@@ -55,20 +51,13 @@ const App = () => {
     });
   };
 
-<<<<<<< HEAD:src/App.js
-	return (
-		<>
-			<h1 style={{textAlign: 'center' }}>UnCover</h1>
-		</>
-	);
-=======
   return (
     <>
       <Router>
         <Nav selectedlocation={location} setLocation={setLocation} />
         <Switch>
           <Route exact path="/" render={(props) => <Main />} />
-          <Route exact path="/about" render={props => <About /> }  />
+          <Route exact path="/about" render={(props) => <About />} />
           <Route
             exact
             path="/find"
@@ -99,7 +88,6 @@ const App = () => {
       </Router>
     </>
   );
->>>>>>> dev:client/src/App.js
 };
 
 export default App;
