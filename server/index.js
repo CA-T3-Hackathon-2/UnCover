@@ -40,12 +40,16 @@ router.post("/api", (req, res) => {
         Authorization:
           "Basic " +
           btoa(process.env.API_USERNAME + ":" + process.env.API_PASSWORD),
-        "Access-Control-Allow-Origin": "https://uncover-events.netlify.app/",
       },
     }
   )
     .then((response) => response.json())
-    .then((data) => res.json(data));
+    .then((data) => {
+      res.append("Access-Control-Allow-Origin", ["*"]);
+      res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+      res.append("Access-Control-Allow-Headers", "Content-Type");
+      res.json(data);
+    });
 });
 
 // Test  working
