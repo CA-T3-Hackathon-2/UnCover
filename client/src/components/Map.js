@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import Submit from "./styled/Submit";
 import "../styles/map.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
@@ -36,7 +37,7 @@ const Map = ({ events, lat, lng }) => {
         onViewportChange={(newView) => {
           setViewport(newView);
         }}
-        mapStyle="mapbox://styles/rhys-morris/ckpthwhyv13lr17nxvy8ruq1o"
+        mapStyle="mapbox://styles/rhys-morris/ckpqt4iel13v317q2faz5scmp"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       >
         {events.map((targetEvent) => (
