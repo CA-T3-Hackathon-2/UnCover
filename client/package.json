@@ -4,17 +4,12 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
-    "@material-ui/core": "^4.9.7",
-    "axios": "0.21.1",
-    "bootstrap": "^4.4.1",
-    "netlify-cli": "^3.35.6",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-map-gl": "^6.1.16",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "reactstrap": "^8.4.1",
     "sass-loader": "^8.0.2",
     "styled-components": "^5.3.0",
     "superagent": "^5.2.2"
