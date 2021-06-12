@@ -40,6 +40,7 @@ router.post("/api", (req, res) => {
         Authorization:
           "Basic " +
           btoa(process.env.API_USERNAME + ":" + process.env.API_PASSWORD),
+        "Access-Control-Allow-Origin": "https://uncover-events.netlify.app/",
       },
     }
   )
