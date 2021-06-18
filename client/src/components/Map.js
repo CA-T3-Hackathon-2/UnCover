@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import mapboxgl from "mapbox-gl";
 import Submit from "./styled/Submit";
 import "../styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
+
+// prettier-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
 const Map = ({ events, lat, lng }) => {
   const [viewport, setViewport] = useState({
@@ -10,8 +15,6 @@ const Map = ({ events, lat, lng }) => {
     longitude: lng,
     zoom: 13,
   });
-
-  console.log(lat, lng);
 
   const [selectedEvent, setSelectedEvent] = useState(null);
 
