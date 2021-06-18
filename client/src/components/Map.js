@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "!react-map-gl";
 import Submit from "./styled/Submit";
 import "../styles/map.css";
 import "mapbox-gl/dist/mapbox-gl.css";
